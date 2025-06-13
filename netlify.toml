@@ -1,20 +1,14 @@
 [build]
-  # Installation explicite puis build
-  command = "npm install && npx tsc && mkdir -p dist && cp -r assets dist/ && cp index.html dist/"
+  # Build correct pour votre structure
+  command = "npm install && npx tsc && mkdir -p dist && cp -r public/* dist/"
   
   # Dossier de publication
   publish = "dist"
 
 # Variables d'environnement
 [build.environment]
-  # Désactive le plugin Next.js
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
-  
-  # Version Node.js
   NODE_VERSION = "18"
-  
-  # Assure que les devDependencies sont installées
-  NODE_ENV = "development"
 
 # Configuration pour les SPA
 [[redirects]]

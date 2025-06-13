@@ -4,10 +4,9 @@
   "description": "Jeu TypeScript des abysses",
   "main": "dist/index.js",
   "scripts": {
-    "build": "npx tsc && npm run copy-assets",
-    "copy-assets": "mkdir -p dist && cp -r assets dist/ && cp index.html dist/",
+    "build": "npx tsc && cp -r public/* dist/",
     "dev": "npx tsc --watch",
-    "start": "live-server dist --port=3000",
+    "start": "live-server public --port=3000",
     "serve": "npm run build && npm run start",
     "clean": "rm -rf dist"
   },
