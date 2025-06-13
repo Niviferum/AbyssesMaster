@@ -1,6 +1,6 @@
 [build]
-  # Build qui place les fichiers au bon endroit
-  command = "npm install && npx tsc && cp -r public/* dist/"
+  # Build avec debug pour voir ce qui se passe
+  command = "npm install && npx tsc && ls -la dist/ && cp -r public/* dist/ && ls -la dist/ && head -5 dist/index.js"
   
   # Dossier de publication
   publish = "dist"
@@ -8,6 +8,41 @@
 # Variables d'environnement
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  NODE_VERSION = "18"
+
+# Headers pour les fichiers JavaScript
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    Cache-Control = "public, max-age=31536000"
+
+# Headers pour les fichiers CSS
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Content-Type = "text/css"
+    Cache-Control = "public, max-age=31536000"
+
+# Headers pour les fichiers HTML
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Content-Type = "text/html; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+# Configuration pour les SPA - ATTENTION À L'ORDRE
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["*"]}
+  force = false_PLUGIN_SKIP = "true"
   NODE_VERSION = "18"
 
 # Headers pour les fichiers JavaScript

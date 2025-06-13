@@ -5,26 +5,25 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "./dist",
-    "rootDir": ".",
+    "rootDir": "./",
     "strict": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": false,
-    "sourceMap": false,
-    "removeComments": true,
-    "noEmitOnError": true,
+    "sourceMap": true,
+    "removeComments": false,
+    "noEmitOnError": false,
     "resolveJsonModule": true
   },
   "include": [
-    "src/**/*",
-    "index.ts"
+    "index.ts",
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "public",
-    "**/*.test.ts"
+    "public"
   ]
 }
