@@ -1,5 +1,5 @@
 [build]
-  command = "npm install && npx tsc && mv dist/index.js dist/main.js && cp -r public/* dist/"
+  command = "npm install && npx tsc && ls -la dist/ && cp -r public/* dist/"
   publish = "dist"
 
 [build.environment]

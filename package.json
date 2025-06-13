@@ -2,7 +2,7 @@
   "name": "abyss-master",
   "version": "1.0.0",
   "description": "Jeu TypeScript des abysses",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
     "build": "npx tsc && cp -r public/* dist/ && ls -la dist/",
     "dev": "npx tsc --watch",
