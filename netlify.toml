@@ -1,6 +1,6 @@
 [build]
-  command = "npm install && npx tsc && cp public/index.html dist/ && cp -r public/assets dist/ && cp public/styles.css dist/"
-  publish = "dist"
+  command = "npm run build"
+  publish = "public"
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
