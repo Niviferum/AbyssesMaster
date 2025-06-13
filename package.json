@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "vite build",
+    "build": "tsc && cp -r assets dist/ && cp index.html dist/",
     "dev": "tsc --watch",
     "start": "live-server public --port=3000",
     "serve": "npm run build && npm run start"
