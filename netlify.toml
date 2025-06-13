@@ -1,0 +1,42 @@
+[build]
+  # Commande de build pour votre projet React/Vite
+  command = "npm ci && npm run build"
+  
+  # Dossier de publication - IMPORTANT: dist pour Vite, pas build
+  publish = "dist"
+
+# Variables d'environnement
+[build.environment]
+  # Désactive complètement le plugin Next.js
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  
+  # Version Node.js
+  NODE_VERSION = "18.17.0"
+  
+  # Variables pour le build TypeScript
+  NODE_ENV = "production"
+  CI = "true"
+
+# Désactive explicitement tous les plugins automatiques
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    disable = true
+
+# Configuration pour les SPA (Single Page Applications)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers de sécurité pour les assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Headers pour les fichiers TypeScript compilés
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"

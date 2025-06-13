@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "tsc",
+    "build": "vite build",
     "dev": "tsc --watch",
     "start": "live-server public --port=3000",
     "serve": "npm run build && npm run start"
