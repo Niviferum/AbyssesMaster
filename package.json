@@ -11,6 +11,9 @@
     "clean": "rm -rf dist",
     "debug": "npx tsc && ls -la dist/ && cat dist/index.html"
   },
+  "dependencies": {
+    "react-icons": "^4.12.0"
+  },
   "devDependencies": {
     "@types/node": "^24.0.1",
     "typescript": "^5.8.3"
