@@ -4,5 +4,8 @@
     "dev": "tsc --watch",
     "start": "live-server public --port=3000",
     "serve": "npm run build && npm run start"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
   }
 }
