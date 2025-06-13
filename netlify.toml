@@ -1,26 +1,9 @@
 [build]
-  # Build corrigé pour src/index.ts
-  command = "npm install && echo 'Compiling TypeScript...' && npx tsc && echo 'Files after compilation:' && find dist -name '*.js' -type f && echo 'Copying public files...' && cp -r public/* dist/ && echo 'Final structure:' && ls -la dist/ && echo 'Index.js exists:' && ls -la dist/index.js && echo 'Content preview:' && head -3 dist/index.js"
-  
-  # Dossier de publication
+  command = "npm install && npx tsc && cp -r public/* dist/"
   publish = "dist"
 
-# Variables d'environnement
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
-  NODE_VERSION = "18"
-
-# Headers pour les fichiers JavaScript
-[[headers]]
-  for = "*.js"
-  [headers.values]
-    Content-Type = "application/javascript; charset=utf-8"
-
-# Configuration SPA (réactivée)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
 
 # Configuration pour les SPA (Single Page Applications)
 [[redirects]]
