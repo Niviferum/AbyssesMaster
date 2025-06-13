@@ -1,9 +1,25 @@
 [build]
-  command = "npm install && npx tsc && ls -la dist/ && cp -r public/* dist/"
+  command = "npm install && npx tsc && cp -r public/* dist/"
   publish = "dist"
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+# Headers JavaScript TRÈS explicites
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/main.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    X-Content-Type-Options = "nosniff"
+
+# AUCUNE redirection - même pas conditionnelle
+# Tous les fichiers doivent être servis directement
 
 # Configuration pour les SPA (Single Page Applications)
 [[redirects]]
