@@ -1,39 +1,26 @@
 [build]
-  # Commande de build pour votre projet React/Vite
-  command = "npm ci && npm run build"
+  # Commande de build simplifiée
+  command = "npm install && npm run build"
   
-  # Dossier de publication - IMPORTANT: dist pour Vite, pas build
+  # Dossier de publication
   publish = "dist"
 
 # Variables d'environnement
 [build.environment]
-  # Désactive complètement le plugin Next.js
+  # Désactive le plugin Next.js
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
   
   # Version Node.js
-  NODE_VERSION = "18.17.0"
+  NODE_VERSION = "18"
   
-  # Variables pour le build TypeScript
+  # Variables pour le build
   NODE_ENV = "production"
-  CI = "true"
 
-# Configuration pour les SPA (Single Page Applications)
+# Configuration pour les SPA
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Headers de sécurité pour les assets
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Headers pour les fichiers TypeScript compilés
-[[headers]]
-  for = "*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
 
 # Configuration pour les SPA (Single Page Applications)
 [[redirects]]

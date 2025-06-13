@@ -1,12 +1,22 @@
 {
+  "name": "abyss-master",
+  "version": "1.0.0",
+  "description": "Jeu TypeScript des abysses",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && cp -r assets dist/ && cp index.html dist/",
+    "build": "tsc && npm run copy-assets",
+    "copy-assets": "mkdir -p dist && cp -r assets dist/ && cp index.html dist/",
     "dev": "tsc --watch",
-    "start": "live-server public --port=3000",
-    "serve": "npm run build && npm run start"
+    "start": "live-server dist --port=3000",
+    "serve": "npm run build && npm run start",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "@types/node": "^24.0.1",
     "typescript": "^5.8.3"
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
 }
