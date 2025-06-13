@@ -1,6 +1,6 @@
 [build]
-  # Build correct pour votre structure
-  command = "npm install && npx tsc && mkdir -p dist && cp -r public/* dist/"
+  # Build qui place les fichiers au bon endroit
+  command = "npm install && npx tsc && cp -r public/* dist/ && cp dist/index.js dist/main.js || true"
   
   # Dossier de publication
   publish = "dist"
@@ -9,6 +9,12 @@
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
   NODE_VERSION = "18"
+
+# Headers pour servir les JS en tant que modules
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Content-Type = "application/javascript"
 
 # Configuration pour les SPA
 [[redirects]]
