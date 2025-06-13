@@ -6,6 +6,7 @@
     "serve": "npm run build && npm run start"
   },
   "devDependencies": {
+    "@types/node": "^24.0.1",
     "typescript": "^5.8.3"
   }
 }
