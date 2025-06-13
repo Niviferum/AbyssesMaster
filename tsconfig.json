@@ -5,20 +5,20 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": false,
+    "emitDeclarationOnly": false,
     "sourceMap": true,
     "removeComments": false,
     "noEmitOnError": false,
     "resolveJsonModule": true
   },
   "include": [
-    "index.ts",
     "src/**/*"
   ],
   "exclude": [

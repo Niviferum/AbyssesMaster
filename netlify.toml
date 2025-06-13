@@ -1,6 +1,6 @@
 [build]
-  # Build avec debug pour voir ce qui se passe
-  command = "npm install && npx tsc && ls -la dist/ && cp -r public/* dist/ && ls -la dist/"
+  # Build corrigé pour src/index.ts
+  command = "npm install && echo 'Compiling TypeScript...' && npx tsc && echo 'Files after compilation:' && find dist -name '*.js' -type f && echo 'Copying public files...' && cp -r public/* dist/ && echo 'Final structure:' && ls -la dist/ && echo 'Index.js exists:' && ls -la dist/index.js && echo 'Content preview:' && head -3 dist/index.js"
   
   # Dossier de publication
   publish = "dist"
@@ -15,23 +15,8 @@
   for = "*.js"
   [headers.values]
     Content-Type = "application/javascript; charset=utf-8"
-    Cache-Control = "public, max-age=31536000"
 
-# Headers pour les fichiers CSS
-[[headers]]
-  for = "*.css"
-  [headers.values]
-    Content-Type = "text/css"
-    Cache-Control = "public, max-age=31536000"
-
-# Headers pour les fichiers HTML
-[[headers]]
-  for = "*.html"
-  [headers.values]
-    Content-Type = "text/html; charset=utf-8"
-    Cache-Control = "public, max-age=3600"
-
-# Configuration pour les SPA
+# Configuration SPA (réactivée)
 [[redirects]]
   from = "/*"
   to = "/index.html"
