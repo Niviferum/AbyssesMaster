@@ -1,0 +1,245 @@
+# ===================================
+# DEPENDENCIES
+# ===================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ===================================
+# BUILD OUTPUTS
+# ===================================
+dist/
+build/
+out/
+.next/
+.nuxt/
+.vercel/
+.netlify/
+
+# ===================================
+# TYPESCRIPT
+# ===================================
+*.tsbuildinfo
+.tscache/
+
+# ===================================
+# BUNDLERS & DEV TOOLS
+# ===================================
+# Vite
+.vite/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Webpack
+.webpack/
+
+# Parcel
+.cache/
+.parcel-cache/
+
+# Rollup
+.rollup.cache/
+
+# ===================================
+# ENVIRONMENT & CONFIG
+# ===================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# ===================================
+# TESTING
+# ===================================
+coverage/
+*.lcov
+.nyc_output/
+junit.xml
+test-results/
+playwright-report/
+test-results.xml
+
+# ===================================
+# CACHE & TEMP FILES
+# ===================================
+.cache/
+tmp/
+temp/
+*.tmp
+*.temp
+.temp/
+
+# ===================================
+# LOGS
+# ===================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ===================================
+# RUNTIME DATA
+# ===================================
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ===================================
+# EDITOR & IDE
+# ===================================
+# VS Code
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/*.code-snippets
+
+# WebStorm / IntelliJ
+.idea/
+*.swp
+*.swo
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===================================
+# OS GENERATED FILES
+# ===================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===================================
+# SECURITY & SECRETS
+# ===================================
+*.pem
+*.key
+*.p12
+*.p8
+*.cer
+*.crt
+*.der
+config/secrets.yml
+config/master.key
+.env.production
+
+# ===================================
+# DATABASE
+# ===================================
+*.sqlite
+*.sqlite3
+*.db
+
+# ===================================
+# ASSETS & MEDIA (optionnel)
+# ===================================
+# Décommentez si vous ne voulez pas versionner certains assets
+# *.jpg
+# *.jpeg
+# *.png
+# *.gif
+# *.svg
+# *.webp
+# *.mp4
+# *.mov
+# *.avi
+# *.webm
+
+# ===================================
+# DOCUMENTATION GÉNÉRÉE
+# ===================================
+docs/generated/
+typedoc/
+.docusaurus/
+
+# ===================================
+# PACKAGE MANAGERS
+# ===================================
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# PNPM
+.pnpm-store/
+
+# ===================================
+# MONITORING & ANALYTICS
+# ===================================
+.storybook/build/
+chromatic-build/
+.turbo/
+
+# ===================================
+# CUSTOM PROJECT FILES
+# ===================================
+# Ajoutez ici vos fichiers spécifiques au projet
+# backup/
+# drafts/
+# private/
