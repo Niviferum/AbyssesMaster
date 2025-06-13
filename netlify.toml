@@ -1,6 +1,6 @@
 [build]
-  # Commande de build simplifiée
-  command = "npm install && npm run build"
+  # Installation explicite puis build
+  command = "npm install && npx tsc && mkdir -p dist && cp -r assets dist/ && cp index.html dist/"
   
   # Dossier de publication
   publish = "dist"
@@ -13,8 +13,8 @@
   # Version Node.js
   NODE_VERSION = "18"
   
-  # Variables pour le build
-  NODE_ENV = "production"
+  # Assure que les devDependencies sont installées
+  NODE_ENV = "development"
 
 # Configuration pour les SPA
 [[redirects]]
