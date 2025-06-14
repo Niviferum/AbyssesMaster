@@ -22,17 +22,23 @@ export class HomeScreen {
     private render(): void {
         this.appElement.innerHTML = `
             <div id="home" class="screen home-screen">
+                <div class="navigation">
+                    <div class="nav-icon" id="grid-btn" title="Grille">⊞</div>
+                    <div class="nav-icon" id="scroll-btn" title="Timeline">〜</div>
+                </div>
                 <h1 class="main-title">Combinatoire Évolutive</h1>
                 <div class="cards-container">
                     ${this.renderCardSlot('blue')}
                     ${this.renderCardSlot('yellow')}
                     ${this.renderCardSlot('red')}
                 </div>
-                <button class="validate-btn" id="validate-btn">Valider</button>
+
+                <button class="validate-btn" id="validate-btn">Rechercher</button>
             </div>
         `;
     }
 
+    
     private renderCardSlot(color: CardColor): string {
         const currentCard = CARD_OPTIONS[color][this.gameState.selectedCards[color]];
         return `
@@ -62,8 +68,19 @@ export class HomeScreen {
                 selector: '#validate-btn',
                 event: 'click',
                 handler: () => this.validateCombination()
+            },
+            {
+                selector: '#grid-btn',
+                event: 'click',
+                handler: () => this.screenManager.navigateToScreen('grid')
+            },
+            {
+                selector: '#scroll-btn',
+                event: 'click',
+                handler: () => this.screenManager.navigateToScreen('scroll')
             }
         ]);
+
     }
 
     private cycleCard(color: CardColor): void {

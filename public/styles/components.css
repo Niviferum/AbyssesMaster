@@ -1,5 +1,4 @@
-
-/* Card Components - Responsive */
+/* Card Components - Clean style without neon effects */
 .card-slot-container {
     display: flex;
     flex-direction: column;
@@ -21,112 +20,12 @@
     overflow: hidden;
     border-radius: 20px;
     padding: 8px;
-    background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    border: 2px solid rgba(255,255,255,0.2);
+    background: #000000;
 }
 
 .card-slot:hover {
     transform: scale(1.05);
-}
-
-.card-slot::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 18px;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
-        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 1px, transparent 1px),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 1px, transparent 1px),
-        linear-gradient(90deg, transparent 48%, rgba(255,255,255,0.1) 49%, rgba(255,255,255,0.1) 51%, transparent 52%),
-        linear-gradient(0deg, transparent 48%, rgba(255,255,255,0.1) 49%, rgba(255,255,255,0.1) 51%, transparent 52%);
-    pointer-events: none;
-    z-index: 2;
-}
-
-.card-slot::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 60%;
-    height: 60%;
-    transform: translate(-50%, -50%);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 2;
-    animation: radar-pulse 2s infinite ease-in-out;
-}
-
-@keyframes radar-pulse {
-    0%, 100% {
-        opacity: 0.3;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-}
-
-/* Glow effects per color */
-.card-slot.blue {
-    border-color: rgba(74, 144, 226, 0.4);
-    background: linear-gradient(45deg, rgba(74, 144, 226, 0.1), rgba(74, 144, 226, 0.05));
-}
-
-.card-slot.blue::after {
-    border-color: rgba(74, 144, 226, 0.6);
-    box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
-}
-
-.card-slot.blue .card-image {
-    box-shadow: 0 0 20px rgba(74, 144, 226, 0.4);
-}
-
-.card-slot.blue:hover .card-image {
-    box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
-}
-
-.card-slot.yellow {
-    border-color: rgba(245, 166, 35, 0.4);
-    background: linear-gradient(45deg, rgba(245, 166, 35, 0.1), rgba(245, 166, 35, 0.05));
-}
-
-.card-slot.yellow::after {
-    border-color: rgba(245, 166, 35, 0.6);
-    box-shadow: 0 0 20px rgba(245, 166, 35, 0.3);
-}
-
-.card-slot.yellow .card-image {
-    box-shadow: 0 0 20px rgba(245, 166, 35, 0.4);
-}
-
-.card-slot.yellow:hover .card-image {
-    box-shadow: 0 0 30px rgba(245, 166, 35, 0.6);
-}
-
-.card-slot.red {
-    border-color: rgba(208, 2, 27, 0.4);
-    background: linear-gradient(45deg, rgba(208, 2, 27, 0.1), rgba(208, 2, 27, 0.05));
-}
-
-.card-slot.red::after {
-    border-color: rgba(208, 2, 27, 0.6);
-    box-shadow: 0 0 20px rgba(208, 2, 27, 0.3);
-}
-
-.card-slot.red .card-image {
-    box-shadow: 0 0 20px rgba(208, 2, 27, 0.4);
-}
-
-.card-slot.red:hover .card-image {
-    box-shadow: 0 0 30px rgba(208, 2, 27, 0.6);
+    background: #000000;
 }
 
 .card-image {
@@ -137,7 +36,6 @@
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
-    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .card-placeholder {
@@ -148,7 +46,6 @@
     justify-content: center;
     background: rgba(0,0,0,0.3);
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.2);
     position: relative;
     z-index: 1;
 }
@@ -204,57 +101,64 @@
     }
 }
 
-/* Button Components - Responsive */
+/* Button Components - Clean style */
 .validate-btn {
     padding: clamp(15px, 2vw, 20px) clamp(30px, 4vw, 40px);
     font-size: clamp(18px, 3vw, 24px);
-    background: linear-gradient(135deg, #28a745, #20c997);
+    background: black;
     color: white;
-    border: none;
+    border: white 2px solid;
     border-radius: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
     margin-top: clamp(20px, 3vw, 30px);
     width: auto;
     min-width: 150px;
-    border: 2px solid rgba(255,255,255,0.2);
+    font-weight: bold;
 }
 
 .validate-btn:hover {
-    background: linear-gradient(135deg, #218838, #1ba085);
+    background: #000000;
     transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.5);
+}
+
+.validate-btn:active {
+    transform: scale(0.98);
+    background: #000000;
 }
 
 /* Touch-friendly adjustments for tablets */
 @media (hover: none) and (pointer: coarse) {
     .card-slot:hover {
         transform: none;
+        background: #333;
     }
     
     .card-slot:active {
         transform: scale(0.95);
+        background: #444;
     }
     
     .validate-btn:hover {
         transform: none;
+        background: #000000;
     }
     
     .validate-btn:active {
         transform: scale(0.95);
+        background: #000000;
     }
 }
 
-/* Animation Effects */
+/* Simple fade-in animations (keeping the smooth entrance) */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideIn {
-    from { transform: translateX(-100%); }
-    to { transform: translateX(0); }
+    from { transform: translateX(-30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }
 
 .card-slot-container {
@@ -264,3 +168,10 @@
 .card-slot-container:nth-child(1) { animation-delay: 0.1s; }
 .card-slot-container:nth-child(2) { animation-delay: 0.2s; }
 .card-slot-container:nth-child(3) { animation-delay: 0.3s; }
+
+.nav-icon img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    object-position: center;
+}

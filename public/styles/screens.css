@@ -232,8 +232,8 @@
     height: clamp(50px, 6vw, 60px);
     font-size: clamp(18px, 2.5vw, 24px);
     background: rgba(0, 0, 0, 0.6);
-    border: 2px solid rgba(0, 255, 200, 0.5);
-    color: rgba(0, 255, 200, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -244,11 +244,11 @@
 }
 
 .nav-icon:hover {
-    background: rgba(0, 255, 200, 0.2);
-    border-color: rgba(0, 255, 200, 0.8);
-    color: rgba(0, 255, 200, 1);
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.8);
+    color: rgb(255, 255, 255);
     transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(0, 255, 200, 0.4);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 .species-info {
@@ -257,14 +257,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(0, 20, 30, 0.95);
-    border: 2px solid rgba(0, 255, 200, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 15px;
     width: min(95vw, 900px);
     height: min(90vh, 800px);
     overflow-y: auto;
     z-index: 200;
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 30px rgba(0, 255, 200, 0.3);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
 .species-info-content {
@@ -280,7 +280,7 @@
     font-size: clamp(24px, 4vw, 32px);
     margin-bottom: 1rem;
     color: rgba(0, 255, 200, 0.9);
-    text-shadow: 0 0 10px rgba(0, 255, 200, 0.5);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .species-fiche {
@@ -290,7 +290,7 @@
     max-height: calc(100% - 120px);
     border-radius: 10px;
     margin: 20px 0;
-    border: 1px solid rgba(0, 255, 200, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     object-fit: contain;
     flex-grow: 1;
 }
@@ -337,13 +337,13 @@
     
     .nav-icon:active {
         transform: scale(0.95);
-        background: rgba(0, 255, 200, 0.3);
+        background: rgba(255, 255, 255, 0.3);
     }
 }
 
 /* Scroll Screen - Responsive */
 .scroll-screen {
-    background: linear-gradient(to bottom, #87CEEB, #4682B4);
+    background: linear-gradient(to bottom, #000000, #ffffff);
     overflow: hidden;
 }
 
@@ -632,8 +632,8 @@
     height: clamp(50px, 6vw, 60px);
     font-size: clamp(18px, 2.5vw, 24px);
     background: rgba(0, 0, 0, 0.6);
-    border: 2px solid rgba(0, 255, 200, 0.5);
-    color: rgba(0, 255, 200, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -644,11 +644,11 @@
 }
 
 .fiche-navigation .nav-icon:hover {
-    background: rgba(0, 255, 200, 0.2);
-    border-color: rgba(0, 255, 200, 0.8);
-    color: rgba(0, 255, 200, 1);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.8);
+    color: rgb(255, 255, 255);
     transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(0, 255, 200, 0.4);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 /* Responsive adjustments */
@@ -659,6 +659,159 @@
     
     .fiche-navigation .nav-icon:active {
         transform: scale(0.95);
-        background: rgba(0, 255, 200, 0.3);
+        background: rgba(255, 255, 255, 0.3);
     }
+}
+
+/* iPad Pro 11" (834x1194 portrait / 1194x834 landscape) */
+@media only screen 
+  and (min-device-width: 834px) 
+  and (max-device-width: 1194px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+  
+  .periods-layout {
+    gap: clamp(25px, 3.5vw, 35px);
+    max-width: 1100px;
+  }
+  
+  .period-column {
+    min-width: clamp(300px, 28vw, 350px);
+  }
+  
+  .period-grid {
+    gap: 3px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .grid-cell {
+    width: clamp(75px, 8.5vw, 95px);
+    height: clamp(75px, 8.5vw, 95px);
+  }
+  
+  .period-title {
+    font-size: clamp(20px, 2.8vw, 26px);
+    margin-bottom: clamp(18px, 2.2vw, 22px);
+  }
+}
+
+/* iPad Pro 12.9" (1024x1366 portrait / 1366x1024 landscape) */
+@media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+  
+  .periods-layout {
+    gap: clamp(30px, 4vw, 45px);
+    max-width: 1300px;
+  }
+  
+  .period-column {
+    min-width: clamp(320px, 30vw, 380px);
+  }
+  
+  .period-grid {
+    gap: 4px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+  
+  .grid-cell {
+    width: clamp(85px, 9vw, 105px);
+    height: clamp(85px, 9vw, 105px);
+  }
+  
+  .period-title {
+    font-size: clamp(22px, 3vw, 28px);
+    margin-bottom: clamp(20px, 2.5vw, 25px);
+  }
+}
+
+/* iPad Pro Portrait - Organisation verticale optimisée */
+@media only screen 
+  and (min-device-width: 834px) 
+  and (max-device-width: 1366px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+  
+  .grid-container {
+    padding: clamp(25px, 4vw, 40px);
+  }
+  
+  .periods-layout {
+    flex-direction: column;
+    gap: clamp(35px, 4vw, 45px);
+    align-items: center;
+  }
+  
+  .period-column {
+    min-width: 100%;
+    max-width: 420px;
+  }
+}
+
+/* iPad Pro Landscape - Organisation horizontale optimisée */
+@media only screen 
+  and (min-device-width: 834px) 
+  and (max-device-width: 1366px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+  
+  .grid-container {
+    padding: clamp(20px, 3vw, 35px);
+    justify-content: flex-start;
+    padding-top: clamp(30px, 4vw, 50px);
+  }
+  
+  .periods-layout {
+    flex-direction: row;
+    gap: clamp(25px, 3vw, 40px);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0 20px;
+    min-width: 100%;
+  }
+  
+  .period-column {
+    min-width: clamp(280px, 25vw, 320px);
+    flex-shrink: 0;
+  }
+  
+  /* Scrollbar pour le paysage si nécessaire */
+  .periods-layout::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .periods-layout::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  
+  .periods-layout::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+  
+  .periods-layout::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Navigation pour iPad Pro */
+@media only screen 
+  and (min-device-width: 834px) 
+  and (max-device-width: 1366px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+  
+  .grid-navigation .nav-icon {
+    width: clamp(55px, 6.5vw, 65px);
+    height: clamp(55px, 6.5vw, 65px);
+    font-size: clamp(20px, 2.8vw, 26px);
+  }
+  
+  .grid-navigation {
+    top: clamp(25px, 3.5vw, 35px);
+    left: clamp(25px, 3.5vw, 35px);
+    gap: clamp(18px, 2.2vw, 22px);
+  }
 }

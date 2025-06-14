@@ -1,9 +1,9 @@
 export const CARD_OPTIONS = {
     blue: [
-        { id: 0, name: 'littorale', image: 'assets/cards/blue_littorale.png' },
-        { id: 1, name: 'mésale', image: 'assets/cards/blue_mesale.png' },
-        { id: 2, name: 'bathyale', image: 'assets/cards/blue_bathyale.png' },
-        { id: 3, name: 'abyssale', image: 'assets/cards/blue_abyssale.png' },
+        { id: 0, name: 'Zone Littorale', image: 'assets/cards/blue_littorale.png' },
+        { id: 1, name: 'Zone Mésale', image: 'assets/cards/blue_mesale.png' },
+        { id: 2, name: 'Zone Bathyale', image: 'assets/cards/blue_bathyale.png' },
+        { id: 3, name: 'Zone Abyssale', image: 'assets/cards/blue_abyssale.png' },
     ],
     yellow: [
         { id: 0, name: 'Paléozoique', image: 'assets/cards/yellow_paleo.png' },
@@ -17,7 +17,7 @@ export const CARD_OPTIONS = {
     ]
 };
 export const CARD_LABELS = {
-    blue: 'Profondeurs',
+    blue: 'Profondeur',
     yellow: 'Période Evolutive',
     red: 'Morphologie'
 };

@@ -24,8 +24,12 @@ export class FicheScreen {
         this.appElement.innerHTML = `
             <div id="fiche" class="screen fiche-screen">
                 <div class="fiche-navigation">
-                    <div class="nav-icon" id="back-to-species-btn" title="Retour à l'espèce">←</div>
-                    <div class="nav-icon" id="back-btn" title="Accueil">🏠</div>
+                    <div class="nav-icon" id="back-to-species-btn" title="Retour à l'espèce">
+                        <img src="../../assets/buttons/close1.png">
+                    </div>
+                    <div class="nav-icon" id="back-btn" title="Accueil">
+                        <img src="../../assets/buttons/retour1.png">
+                    </div>
                     <div class="nav-icon" id="grid-btn" title="Grille">⊞</div>
                     <div class="nav-icon" id="scroll-btn" title="Timeline">〜</div>
                 </div>

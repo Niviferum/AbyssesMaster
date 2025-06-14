@@ -28,11 +28,16 @@ export class SpeciesScreen {
                 </video>
                 
                 <div class="navigation">
-                    <div class="nav-icon" id="back-btn" title="Retour">←</div>
+                    <div class="nav-icon" id="back-btn" title="Retour">
+                        <img src="../../assets/buttons/retour1.png">
+                    </div>
                     <div class="nav-icon" id="grid-btn" title="Grille">⊞</div>
-                    <div class="nav-icon" id="info-btn" title="Fiche espèce">📋</div>
+                    <div class="nav-icon" id="info-btn" title="Fiche espèce">
+                        <img src="../../assets/buttons/show1.png">
+                    </div>
                     <div class="nav-icon" id="scroll-btn" title="Timeline">〜</div>
                 </div>
+                
             </div>
         `;
     }

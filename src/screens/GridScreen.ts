@@ -27,7 +27,9 @@ export class GridScreen {
         this.appElement.innerHTML = `
             <div id="grid" class="screen grid-screen">
                 <div class="grid-navigation">
-                    <div class="nav-icon" id="back-btn" title="Retour">←</div>
+                    <div class="nav-icon" id="back-btn" title="Retour">
+                        <img src="../../assets/buttons/retour1.png">
+                    </div>
                 </div>
                 <div class="grid-container">
                     <div class="periods-layout">
