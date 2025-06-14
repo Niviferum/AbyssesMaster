@@ -36,7 +36,7 @@
 
 /* Home Screen - Responsive */
 .home-screen {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    background: #000000;
     justify-content: center;
     align-items: center;
     padding: clamp(1rem, 3vw, 2rem);
