@@ -29,7 +29,7 @@ export class GridScreen {
                     </div>
                     <div class="grid-container">
                         <div class="periods-layout">
-                            ${this.renderPeriodTitles()}
+
                             ${this.renderClickZones()}
                             ${this.renderAllDiscoveredAnimals()}
                         </div>
