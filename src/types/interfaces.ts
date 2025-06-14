@@ -5,10 +5,10 @@ export interface Animal {
     discovered: boolean;
     videoPath: string;
     imagePath: string;
+    lockImagePath: string; // ← Ajoutez cette ligne
     fichePath: string;
-    scrollPosition: Position;
-    combination: Combination;
-    gridPosition?: GridPosition; // Ajouté pour les positions dans la grille
+    scrollPosition: { x: number; y: number };
+    combination: { blue: number; yellow: number; red: number };
 }
 
 export interface CardOption {
@@ -36,7 +36,7 @@ export interface Combination {
 }
 
 export type Period = 'E1' | 'E2' | 'E3';
-export type Screen = 'loading' | 'home' | 'species' | 'scroll' | 'grid';
+export type Screen = 'loading' | 'home' | 'species' | 'scroll' | 'grid' | 'fiche';
 export type CardColor = 'blue' | 'yellow' | 'red';
 
 export interface GameState {

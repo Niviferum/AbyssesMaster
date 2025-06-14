@@ -7,7 +7,6 @@ export class SpeciesScreen {
     private gameState: GameState;
     private screenManager: ScreenManager;
     private eventBinder: EventBinder;
-    private sonarEnabled: boolean = true;
 
     constructor(appElement: HTMLElement, gameState: GameState, screenManager: ScreenManager) {
         this.appElement = appElement;
@@ -28,35 +27,11 @@ export class SpeciesScreen {
                     <source src="${animal.videoPath}" type="video/mp4">
                 </video>
                 
-                <div class="sonar-overlay ${this.sonarEnabled ? 'active' : 'hidden'}" id="sonar-overlay">
-                    <div class="sonar-grid"></div>
-                    <div class="sonar-circle sonar-circle-1"></div>
-                    <div class="sonar-circle sonar-circle-2"></div>
-                    <div class="sonar-circle sonar-circle-3"></div>
-                    <div class="sonar-sweep"></div>
-                    <div class="sonar-crosshair"></div>
-                </div>
-                
                 <div class="navigation">
-                    <div class="nav-icon" id="sonar-toggle" title="Toggle Sonar">📡</div>
                     <div class="nav-icon" id="back-btn" title="Retour">←</div>
                     <div class="nav-icon" id="grid-btn" title="Grille">⊞</div>
-                    <div class="nav-icon" id="info-btn" title="Informations">👁</div>
+                    <div class="nav-icon" id="info-btn" title="Fiche espèce">📋</div>
                     <div class="nav-icon" id="scroll-btn" title="Timeline">〜</div>
-                </div>
-                
-                ${this.renderSpeciesInfo(animal)}
-            </div>
-        `;
-    }
-
-    private renderSpeciesInfo(animal: any): string {
-        return `
-            <div id="species-info" class="species-info ${this.gameState.showSpeciesInfo ? '' : 'hidden'}">
-                <div class="species-info-content">
-                    <h2>${animal.name}</h2>
-                    <img src="${animal.fichePath}" alt="${animal.name}" class="species-fiche">
-                    <button class="close-btn" id="close-info-btn">Fermer</button>
                 </div>
             </div>
         `;
@@ -64,11 +39,6 @@ export class SpeciesScreen {
 
     private bindEvents(): void {
         this.eventBinder.bindEvents('species', [
-            {
-                selector: '#sonar-toggle',
-                event: 'click',
-                handler: () => this.toggleSonar()
-            },
             {
                 selector: '#back-btn',
                 event: 'click',
@@ -82,49 +52,14 @@ export class SpeciesScreen {
             {
                 selector: '#info-btn',
                 event: 'click',
-                handler: () => this.toggleSpeciesInfo()
+                handler: () => this.screenManager.navigateToScreen('fiche')
             },
             {
                 selector: '#scroll-btn',
                 event: 'click',
                 handler: () => this.goToScroll()
-            },
-            {
-                selector: '#close-info-btn',
-                event: 'click',
-                handler: () => this.hideSpeciesInfo()
             }
         ]);
-    }
-
-    private toggleSonar(): void {
-        this.sonarEnabled = !this.sonarEnabled;
-        const sonarOverlay = document.getElementById('sonar-overlay');
-        const sonarToggle = document.getElementById('sonar-toggle');
-        
-        if (sonarOverlay && sonarToggle) {
-            if (this.sonarEnabled) {
-                sonarOverlay.classList.remove('hidden');
-                sonarOverlay.classList.add('active');
-                sonarToggle.style.opacity = '1';
-            } else {
-                sonarOverlay.classList.remove('active');
-                sonarOverlay.classList.add('hidden');
-                sonarToggle.style.opacity = '0.5';
-            }
-        }
-    }
-
-    private toggleSpeciesInfo(): void {
-        this.gameState.showSpeciesInfo = !this.gameState.showSpeciesInfo;
-        const infoDiv = document.getElementById('species-info')!;
-        infoDiv.classList.toggle('hidden');
-    }
-
-    private hideSpeciesInfo(): void {
-        this.gameState.showSpeciesInfo = false;
-        const infoDiv = document.getElementById('species-info')!;
-        infoDiv.classList.add('hidden');
     }
 
     private goToScroll(): void {

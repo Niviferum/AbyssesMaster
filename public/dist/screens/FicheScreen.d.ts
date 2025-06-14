@@ -1,19 +1,12 @@
 import { GameState } from '../types/interfaces.js';
 import { ScreenManager } from '../utils/ScreenManager.js';
-export declare class GridScreen {
+export declare class FicheScreen {
     private appElement;
     private gameState;
     private screenManager;
     private eventBinder;
-    private readonly GRID_COLS;
-    private readonly GRID_ROWS;
-    private readonly CELLS_PER_PERIOD;
     constructor(appElement: HTMLElement, gameState: GameState, screenManager: ScreenManager);
     private render;
-    private renderPeriodColumn;
-    private renderGridCells;
-    private renderAnimalCell;
     private bindEvents;
-    private selectPeriod;
-    private selectAnimal;
+    private goToScroll;
 }

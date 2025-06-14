@@ -1,14 +1,18 @@
 import { GameState, Period } from '../types/interfaces.js';
 import { ScreenManager } from '../utils/ScreenManager.js';
 import { EventBinder } from '../utils/EventBinder.js';
-import { getAnimalsByPeriod, getAnimalById } from '../data/animals.js'; 
-import { getGridPosition } from './IpadGridPositions.js'; 
+import { getAnimalsByPeriod, getAnimalById } from '../data/animals.js';
 
 export class GridScreen {
     private appElement: HTMLElement;
     private gameState: GameState;
     private screenManager: ScreenManager;
     private eventBinder: EventBinder;
+
+    // Configuration de la grille : 3 colonnes × 4 lignes = 12 cellules par période
+    private readonly GRID_COLS = 3;
+    private readonly GRID_ROWS = 4;
+    private readonly CELLS_PER_PERIOD = this.GRID_COLS * this.GRID_ROWS;
 
     constructor(appElement: HTMLElement, gameState: GameState, screenManager: ScreenManager) {
         this.appElement = appElement;
@@ -21,110 +25,69 @@ export class GridScreen {
 
     private render(): void {
         this.appElement.innerHTML = `
-            <div id="grid" class="screen" 
-                 style="display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh;">
-                <div class="grid-screen" style="width: 85%; aspect-ratio: 16/9;">
-                    <div class="grid-navigation">
-                        <div class="nav-icon" id="back-btn" title="Retour">←</div>
-                    </div>
-                    <div class="grid-container">
-                        <div class="periods-layout">
-
-                            ${this.renderClickZones()}
-                            ${this.renderAllDiscoveredAnimals()}
-                        </div>
+            <div id="grid" class="screen grid-screen">
+                <div class="grid-navigation">
+                    <div class="nav-icon" id="back-btn" title="Retour">←</div>
+                </div>
+                <div class="grid-container">
+                    <div class="periods-layout">
+                        ${this.renderPeriodColumn('E1', 'Paléozoïque')}
+                        ${this.renderPeriodColumn('E2', 'Mésozoïque')}
+                        ${this.renderPeriodColumn('E3', 'Cénozoïque')}
                     </div>
                 </div>
             </div>
         `;
     }
 
-    private renderPeriodTitles(): string {
-        return `
-            <div class="period-title paleozoique">Paléozoïque</div>
-            <div class="period-title mesozoique">Mésozoïque</div>
-            <div class="period-title cenozoique">Cénozoïque</div>
-        `;
-    }
-
-    private renderClickZones(): string {
-        return `
-            <div class="period-clickzone paleozoique" data-period="E1"></div>
-            <div class="period-clickzone mesozoique" data-period="E2"></div>
-            <div class="period-clickzone cenozoique" data-period="E3"></div>
-        `;
-    }
-
-    private renderAllDiscoveredAnimals(): string {
-        let animalsHtml = '';
-        
-        // Rendu pour toutes les périodes
-        animalsHtml += this.renderPeriodAnimals('E1');
-        animalsHtml += this.renderPeriodAnimals('E2');
-        animalsHtml += this.renderPeriodAnimals('E3');
-        
-        return animalsHtml;
-    }
-
-    private renderPeriodAnimals(period: Period): string {
+    private renderPeriodColumn(period: Period, title: string): string {
         const animals = getAnimalsByPeriod(period);
+        
+        return `
+            <div class="period-column">
+                <h2 class="period-title">${title}</h2>
+                <div class="period-grid" data-period="${period}">
+                    ${this.renderGridCells(animals)}
+                </div>
+            </div>
+        `;
+    }
+
+    private renderGridCells(animals: any[]): string {
         let cellsHtml = '';
         
-        animals.forEach((animal, index) => {
-            if (this.gameState.discoveredAnimals.has(animal.id)) {
-                // Calculer la position basée sur l'index de l'animal dans la période
-                const row = Math.floor(index / 3) + 1; // 1-4
-                const col = (index % 3) + 1; // 1-3
-                const pos = getGridPosition(period, row, col);
-                
-                if (pos) {
-                    cellsHtml += `
-                        <div class="grid-cell discovered" 
-                             data-animal-id="${animal.id}"
-                             data-period="${period}"
-                             style="left: ${pos.left}px; 
-                                    top: ${pos.top}px; 
-                                    width: ${pos.width}px; 
-                                    height: ${pos.height}px;">
-                            <img src="${animal.imagePath}" 
-                                 alt="${animal.name}" 
-                                 class="grid-cell-image">
-                        </div>
-                    `;
-                }
+        // Génère exactement 12 cellules (3×4) pour chaque période
+        for (let i = 0; i < this.CELLS_PER_PERIOD; i++) {
+            const animal = animals[i]; // undefined si pas assez d'animaux
+            
+            if (animal) {
+                const isDiscovered = this.gameState.discoveredAnimals.has(animal.id);
+                cellsHtml += this.renderAnimalCell(animal, isDiscovered);
+            } else {
+                // Cellule vide pour maintenir la structure de la grille
+                cellsHtml += `<div class="grid-cell empty"></div>`;
             }
-        });
+        }
         
         return cellsHtml;
     }
 
-    // Version alternative si vos animaux ont déjà gridPosition défini
-    private renderPeriodAnimalsWithStoredPositions(period: Period): string {
-        const animals = getAnimalsByPeriod(period);
-        let cellsHtml = '';
-        
-        animals.forEach((animal) => {
-            if (this.gameState.discoveredAnimals.has(animal.id) && animal.gridPosition) {
-                const pos = animal.gridPosition;
-                
-                cellsHtml += `
-                    <div class="grid-cell discovered" 
-                         data-animal-id="${animal.id}"
-                         data-period="${period}"
-                         style="left: ${pos.left}px; 
-                                top: ${pos.top}px; 
-                                width: ${pos.width}px; 
-                                height: ${pos.height}px;">
-                        <img src="${animal.imagePath}" 
-                             alt="${animal.name}" 
-                             class="grid-cell-image">
-                    </div>
-                `;
-            }
-        });
-        
-        return cellsHtml;
+private renderAnimalCell(animal: any, isDiscovered: boolean): string {
+    if (isDiscovered) {
+        return `
+            <div class="grid-cell discovered" data-animal-id="${animal.id}">
+                <img src="${animal.imagePath}" alt="${animal.name}" class="grid-cell-image">
+            </div>
+        `;
+    } else {
+        // Utilise l'image de lock dédiée au lieu du cadenas et de la silhouette
+        return `
+            <div class="grid-cell locked" data-animal-id="${animal.id}">
+                <img src="${animal.lockImagePath}" alt="Animal verrouillé" class="grid-cell-image">
+            </div>
+        `;
     }
+}
 
     private bindEvents(): void {
         this.eventBinder.bindEvents('grid', [
@@ -134,7 +97,7 @@ export class GridScreen {
                 handler: () => this.screenManager.navigateToScreen('home')
             },
             {
-                selector: '.period-clickzone',
+                selector: '.period-grid',
                 event: 'click',
                 handler: (e: Event) => this.selectPeriod(e)
             },
@@ -147,15 +110,20 @@ export class GridScreen {
     }
 
     private selectPeriod(e: Event): void {
-        const period = (e.currentTarget as HTMLElement).dataset.period as Period;
-        if (period) {
-            this.gameState.currentPeriod = period;
-            this.screenManager.navigateToScreen('scroll');
+        const target = e.target as HTMLElement;
+        
+        // Vérifie si le clic est sur la grille elle-même (pas sur une cellule)
+        if (target.classList.contains('period-grid')) {
+            const period = target.dataset.period as Period;
+            if (period) {
+                this.gameState.currentPeriod = period;
+                this.screenManager.navigateToScreen('scroll');
+            }
         }
     }
 
     private selectAnimal(e: Event): void {
-        e.stopPropagation(); // Empêche la propagation vers la zone cliquable
+        e.stopPropagation(); // Empêche la propagation vers le selectPeriod
         
         const animalId = (e.currentTarget as HTMLElement).dataset.animalId;
         if (animalId) {

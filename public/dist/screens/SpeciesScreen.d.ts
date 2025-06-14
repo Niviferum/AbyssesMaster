@@ -5,13 +5,8 @@ export declare class SpeciesScreen {
     private gameState;
     private screenManager;
     private eventBinder;
-    private sonarEnabled;
     constructor(appElement: HTMLElement, gameState: GameState, screenManager: ScreenManager);
     private render;
-    private renderSpeciesInfo;
     private bindEvents;
-    private toggleSonar;
-    private toggleSpeciesInfo;
-    private hideSpeciesInfo;
     private goToScroll;
 }
