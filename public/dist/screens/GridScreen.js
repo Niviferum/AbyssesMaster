@@ -11,20 +11,22 @@ export class GridScreen {
     }
     render() {
         this.appElement.innerHTML = `
-            <div id="grid" class="screen grid-screen">
-                <div class="grid-navigation">
-                    <div class="nav-icon" id="back-btn" title="Retour">←</div>
-                </div>
-                <div class="grid-container">
-                    <div class="periods-layout">
-                        ${this.renderPeriodCells('E1', 'paleozoique')}
-                        ${this.renderPeriodCells('E2', 'mesozoique')}
-                        ${this.renderPeriodCells('E3', 'cenozoique')}
-                        ${this.renderClickZones()}
+            <div id="grid" class="screen" 
+             style="display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh;">
+                <div class="grid-screen" style="width: 85%; aspect-ratio: 16/9;">
+                    <div class="grid-navigation">
+                        <div class="nav-icon" id="back-btn" title="Retour">←</div>
+                    </div>
+                    <div class="grid-container">
+                        <div class="periods-layout">
+                            ${this.renderPeriodCells('E1', 'paleozoique')}
+                            ${this.renderPeriodCells('E2', 'mesozoique')}
+                            ${this.renderPeriodCells('E3', 'cenozoique')}
+                            ${this.renderClickZones()}
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
     }
     renderPeriodCells(period, periodClass) {
         const animals = getAnimalsByPeriod(period);

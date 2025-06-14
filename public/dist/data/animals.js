@@ -10,7 +10,7 @@ export const ANIMALS_DATA = [
         fichePath: 'assets/fiches/P1E1M1.png',
         scrollPosition: { x: 200, y: 300 },
         combination: { blue: 1, yellow: 1, red: 1 },
-        gridPosition: { left: 74, top: 184, width: 197, height: 166 } // Cellule 1 Paléozoïque
+        gridPosition: { left: 0, top: 184, width: 166, height: 141 } // Cellule 1 Paléozoïque
     },
     {
         id: 'pleurotomaire_p1e1',

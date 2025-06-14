@@ -424,19 +424,23 @@
     margin: 0;
 }
 
-/* Grid Screen - Responsive 16:9 */
-.grid-screen {
-    background: #000 url('../assets/grid/grid.png') center/cover;
-    padding: 0;
+/* Alternative si vous voulez remplir tout l'écran sans déformation */
+.grid-screen{
+    background-image: url('../assets/grid/grid.png');
+    ;
+    background-size: cover;             /* Remplit l'écran */
+    background-position: center center; /* Centre parfaitement */
+    background-repeat: no-repeat;
+    position: relative;
+    width: 85%;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     aspect-ratio: 16/9;
 }
-
 .grid-navigation {
-    position: absolute;
+    position: relative;
     top: clamp(20px, 3vw, 30px);
     left: clamp(20px, 3vw, 30px);
     z-index: 100;
@@ -448,7 +452,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: clamp(20px, 3vw, 40px);
     box-sizing: border-box;
 }
 
