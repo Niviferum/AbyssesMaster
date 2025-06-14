@@ -24,7 +24,6 @@ export class HomeScreen {
             <div id="home" class="screen home-screen">
                 <div class="navigation">
                     <div class="nav-icon" id="grid-btn" title="Grille">⊞</div>
-                    <div class="nav-icon" id="scroll-btn" title="Timeline">〜</div>
                 </div>
                 <h1 class="main-title">Combinatoire Évolutive</h1>
                 <div class="cards-container">

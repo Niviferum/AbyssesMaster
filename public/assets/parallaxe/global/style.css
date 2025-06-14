@@ -1,0 +1,378 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+
+body {
+	background-color:#edebe2;
+	margin: 0px;
+}
+
+/* HAUTEUR DU SCROLL DE L'UTILISATEUR */
+#scrolledHeight {
+	position: fixed;
+	left: 30px;
+	bottom: 30px;
+	padding:10px;
+	z-index: 3000;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background-color:#fff;
+	opacity:0;
+}
+
+
+button {
+	z-index: 100000;
+}
+
+/*---------------------------------------------------*/
+/*                                                   */
+/*     PARALLAX                                      */
+/*                                                   */
+/*---------------------------------------------------*/
+
+
+.scene {
+  padding: 0;
+  margin: 0;
+}
+
+.layer img { width:100%;height:auto; }
+
+
+#conteneur-nord {
+	position:relative;
+	border:solid 0px #f3efea;
+	width:110vw;height:520vh;
+	top:-100vh;left:-5vw;
+	z-index:1000;
+	overflow-y:auto;
+	overflow-x: hidden;
+	/*clip: rect(0px, 984px, 586px, 0px);*/
+	/*background-image: url(Saba-BG.png);
+	background-position:center center;
+	background-size:cover;*/
+	transition: all 1.5s;
+	-moz-transition: all 1.5s;
+	-webkit-transition: all 1.5s;
+	-o-transition: all 1.5s;	
+}
+
+/*
+#container {
+  visibility: hidden;
+}
+*/
+
+
+.videoAnim { 
+	width: 300px;
+	border:solid 0px red; 
+  animation-iteration-count: infinite;
+}
+.videoAnim video { width: 100%; }
+
+
+
+
+
+
+/* MARDI 10 */
+
+
+#pleuro { 
+	margin-top: 300px;
+	margin-left:50px;
+	transform: scale(0.7); 
+}
+
+
+#placo { 
+	animation-name: placo;
+	animation-duration: 30s;
+	animation-delay: 0s;
+	margin-top: 300px;transform: scale(2); }
+@keyframes placo {
+  0%   { margin-left: 100vw; }
+  100%   { margin-left: 30vw; }
+}
+
+
+#anomalocaris { 
+	animation-name: anomalocaris;
+	animation-duration: 40s;
+	animation-delay: 0s;
+	margin-top: 1400px;transform: scale(2.5); }
+@keyframes anomalocaris {
+  0%   { margin-left: 30vw; }
+  100%   { margin-left: 100vw; }
+}
+
+
+#coelacanthe1 { 
+	animation-name: coelacanthe1;
+	animation-duration: 50s;
+	animation-delay: 0s;
+	margin-top: 1000px;transform: scale(1); }
+@keyframes coelacanthe1 {
+  0%   { margin-left: 30vw; }
+  100%   { margin-left: 100vw; }
+}
+
+#conodont1 { 
+	animation-name: conodont1;
+	animation-duration: 30s;
+	animation-delay: 0s;
+	margin-top: 4300px;transform: scale(1); }
+@keyframes conodont1 {
+  0%   { margin-left: 100vw; }
+  100%   { margin-left: 30vw; }
+}
+
+#conodont2 { 
+	animation-name: conodont2;
+	animation-duration: 20s;
+	animation-delay: 5s;
+	margin-top: 6000px;transform: scale(2); }
+@keyframes conodont2 {
+  0%   { margin-left: 100vw; }
+  100%   { margin-left: 30vw; }
+}
+
+#orthocone { 
+	margin-top: 1100px;
+	margin-left:650px;
+	transform: scale(1); 
+}
+
+#nipponite { 
+	margin-top: 5100px;
+	margin-left:1500px;
+	transform: scale(2.5); 
+}
+
+#pycnogonide1 { 
+	margin-top: 6500px;
+	margin-left:1400px;
+	transform: scale(1); 
+}
+
+#limule { 
+	margin-top: 550px;
+	margin-left:500px;
+	transform: scale(1.5); 
+}
+
+#chiton1 { 
+	margin-top: 7000px;
+	margin-left:1500px;
+	transform: scale(1.5); 
+}
+
+#eryma { 
+	margin-top: 6000px;
+	margin-left:100px;
+	transform: scale(1.5); 
+}
+
+/*mesozoique*/
+
+#plesiosaure { 
+		animation-name: plesiosaure;
+		animation-duration: 10s;
+		animation-delay: 0s;
+		margin-top: 1500px;transform: scale(5); }
+	@keyframes plesiosaure {
+	  0%   { margin-left: 30vw; }
+	  100%   { margin-left: 120vw; }
+	}
+
+	#requin { 
+		animation-name: requin;
+		animation-duration: 30s;
+		animation-delay: 0s;
+		margin-top: 4300px;transform: scale(2); }
+	@keyframes requin {
+	  0%   { margin-left: 100vw; }
+	  100%   { margin-left: 30vw; }
+	}
+
+	#liparid1 { 
+		animation-name: liparid1;
+		animation-duration: 50s;
+		animation-delay: 0s;
+		margin-top: 5500px;transform: scale(1); rotate:-45deg; }
+	@keyframes liparid1 {
+	  0%   { margin-left: 100vw; }
+	  100%   { margin-left: 30vw; }
+	}
+
+
+#strigosa { 
+	animation-name: strigosa;
+	animation-duration: 50s;
+	animation-delay: 0s;
+	margin-top: 1000px;
+	margin-left:700px;
+	transform: scale(0.7); }
+@keyframes strigosa {
+		0%   { margin-left: 40vw; }
+		100%   { margin-left: 20vw; }
+	}
+
+	#nautile { 
+		animation-name: nautile;
+		animation-duration: 40s;
+		animation-delay: 0s;
+		margin-top: 2000px;transform: scale(1.5); }
+	@keyframes nautile {
+	  0%   { margin-left: 100vw; }
+	  100%   { margin-left: 30vw; }
+	}
+
+	#vampire { 
+		margin-top: 4500px;
+		margin-left:500px;
+		transform: scale(1); 
+	}
+
+	#coleia { 
+		margin-top: 5800px;
+		margin-left:1500px;
+		transform: scale(1); 
+	}
+	
+	#coelacanthe2 { 
+		animation-name: coelacanthe2;
+		animation-duration: 50s;
+		animation-delay: 0s;
+		margin-top: 2500px;transform: scale(3); }
+	@keyframes coelacanthe2 {
+	  0%   { margin-left: 30vw; }
+	  100%   { margin-left: 100vw; }
+	}
+
+	#chiton2 { 
+		margin-top: 7000px;
+		margin-left:1500px;
+		transform: scale(1.5); 
+	}
+
+	#pycnogonide2 { 
+		margin-top: 6000px;
+		margin-left:500px;
+		transform: scale(0.7); 
+	}
+
+	#argo { 
+		margin-top: 1500px;
+		margin-left:350px;
+		transform: scale(2.5); 
+	}
+
+	#eury { 
+		margin-top: 3000px;
+		margin-left:350px;
+		transform: scale(2); 
+	}
+
+	/*cenozoique*/
+
+	#noto { 
+		animation-name: noto;
+		animation-duration: 10s;
+		animation-delay: 5s;
+		margin-top: 1250px;transform: scale(2); }
+	@keyframes noto {
+	  0%   { margin-left: 30vw; }
+	  100%   { margin-left: 110vw; }
+	}
+
+	#coelacanthe3 { 
+		animation-name: coelacanthe3;
+		animation-duration: 50s;
+		animation-delay: 0s;
+		margin-top: 2000px;transform: scale(3); }
+	@keyframes coelacanthe3 {
+	  0%   { margin-left: 30vw; }
+	  100%   { margin-left: 110vw; }
+	}
+
+	#whalefish { 
+		animation-name: whalefish;
+		animation-duration: 30s;
+		animation-delay: 0s;
+		margin-top: 4300px;transform: scale(2); }
+	@keyframes whalefish {
+	  0%   { margin-left: 100vw; }
+	  100%   { margin-left: 30vw; }
+	}
+
+	#liparid2 { 
+		animation-name: liparid2;
+		animation-duration: 50s;
+		animation-delay: 0s;
+		margin-top: 5500px;transform: scale(1); rotate:-45deg; }
+	@keyframes liparid2 {
+	  0%   { margin-left: 100vw; }
+	  100%   { margin-left: 30vw; }
+	}
+
+	#triops { 
+		margin-top: 1050px;
+		margin-left:1600px;
+		transform: scale(1); 
+	}
+
+	#calmar { 
+		animation-name: calmar;
+		animation-duration: 30s;
+		animation-delay: 0s;
+		margin-top: 2300px;transform: scale(2); }
+	@keyframes calmar {
+	  0%   { margin-left: 110vw; }
+	  100%   { margin-left: 30vw; }
+	}
+
+	#bathynome { 
+		animation-name: bathynome;
+		animation-duration: 30s;
+		animation-delay: 0s;
+		margin-top: 5800px;transform: scale(2); }
+	@keyframes bathynome {
+	  0%   { margin-left: 80vw; }
+	  100%   { margin-left: 100vw; }
+	}
+
+	#pieuvre { 
+		margin-top: 1500px;
+		margin-left:500px;
+		transform: scale(1); 
+	}
+
+	#moule { 
+		margin-top: 7000px;
+		margin-left:1000px;
+		transform: scale(1); 
+	}
+
+	#neoglyphea { 
+		margin-top: 2500px;
+		margin-left:400px;
+		transform: scale(1); 
+	}
+
+	#scalyfoot { 
+		margin-top: 5500px;
+		margin-left:300px;
+		transform: scale(1); 
+	}
+
+	#hirondellea { 
+		margin-top: 6800px;
+		margin-left:350px;
+		transform: scale(1); 
+	}
+

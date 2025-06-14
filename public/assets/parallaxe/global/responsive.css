@@ -1,0 +1,123 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*---------------------------------------------------*/
+/*                                                   */
+/*     RESPONSIVE                                    */
+/*                                                   */
+/*---------------------------------------------------*/
+
+/*---------------------------------------------------*/
+/*     > 1280 = LARGE SCREEN                         */
+/*---------------------------------------------------*/
+@media screen and (min-width: 1281px) and (max-width: 1680px) {
+	#intro_text {
+		width: 40%;
+		font-size: 22px;
+		color: #391A17;
+		line-height:1.4em;
+	}
+	.texte {
+		
+		font-size: 22px;
+		color: #391A17;
+		line-height:1.4em;
+	}
+	#menu_hamburger { top:20px;left:20px;width:45px; }
+	#logo { top:20px;right:20px;width:90px; }
+	#help { bottom:20px;left:20px;width:45px;}
+	#go-south { height:70px; }
+	#go-north { height:70px; }
+}
+/*---------------------------------------------------*/
+/*     ENTRE 1025 et 1280 = LAPTOPS                  */
+/*---------------------------------------------------*/
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+	#intro_text {
+		width: 45%;
+		font-size: 20px;
+		color: #391A17;
+		line-height:1.4em;
+	}
+	.texte {
+		
+		font-size: 20px;
+		color: #391A17;
+		line-height:1.4em;
+	}
+	#menu_hamburger { top:15px;left:15px;width:40px; }
+	#logo { top:15px;right:15px;width:80px; }
+	#help { bottom:15px;left:15px;width:40px;}
+	#go-south { height:60px; }
+	#go-north { height:60px; }
+}
+/*---------------------------------------------------*/
+/*     IPAD					                         */
+/*---------------------------------------------------*/
+
+@media screen and (min-width: 761px) and (max-width: 1024px) {
+	#intro_text {
+		width: 50%;
+		font-size: 18px;
+		color: #391A17;
+		line-height:1.4em;
+	}
+	.texte {
+		
+		font-size: 18px;
+		color: #391A17;
+		line-height:1.4em;
+	}
+	#menu_hamburger { top:12px;left:12px;width:35px; }
+	#logo { top:12px;right:12px;width:75px; }
+	#help { bottom:12px;left:12px;width:35px;}
+	#go-south { height:50px; }
+	#go-north { height:50px; }
+}
+/*---------------------------------------------------*/
+/*     < 760 = SMALL					             */
+/*---------------------------------------------------*/
+
+@media screen and (min-width: 641px) and (max-width: 760px) {
+	#intro_text {
+		width: 60%;
+		font-size: 20px;
+		color: #391A17;
+		line-height:1.4em;
+	}
+	.texte {
+		
+		font-size: 16px;
+		color: #391A17;
+		line-height:1.4em;
+	}
+	#menu_hamburger { top:10px;left:10px;width:30px; }
+	#logo { top:10px;right:10px;width:70px; }
+	#help { bottom:10px;left:10px;width:30px;}
+	#go-south { height:40px; }
+	#go-north { height:40px; }
+}
+
+/*---------------------------------------------------*/
+/*     < 640 = SMARTPHONE                            */
+/*---------------------------------------------------*/
+
+@media screen and (max-width: 640px) {
+	#intro_text {
+		width: 70%;
+		font-size: 22px;
+		color: #391A17;
+		line-height:1.4em;
+	}
+	.texte {
+		
+		font-size: 15px;
+		color: #391A17;
+		line-height:1.4em;
+	}
+	#menu_hamburger { top:10px;left:10px;width:30px; }
+	#logo { top:10px;right:10px;width:70px; }
+	#help { bottom:10px;left:10px;width:30px;}
+	#go-south { height:40px; }
+	#go-north { height:40px; }
+}
