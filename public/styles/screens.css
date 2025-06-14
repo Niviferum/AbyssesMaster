@@ -409,7 +409,7 @@
 }
 
 .period-indicator {
-    position: absolute;
+    position: relative;
     top: clamp(20px, 3vw, 30px);
     left: 50%;
     transform: translateX(-50%);
@@ -424,21 +424,20 @@
     margin: 0;
 }
 
-/* Alternative si vous voulez remplir tout l'écran sans déformation */
-.grid-screen{
+.grid-screen {
     background-image: url('../assets/grid/grid.png');
-    ;
-    background-size: cover;             /* Remplit l'écran */
-    background-position: center center; /* Centre parfaitement */
+    background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
     position: relative;
-    width: 85%;
+    width: 1366px;
+    height: 1024px;
+    max-width: 85vw;
+    max-height: 85vh;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 16/9;
+    /* Suppression du flexbox qui interfère */
 }
+
 .grid-navigation {
     position: relative;
     top: clamp(20px, 3vw, 30px);
@@ -449,87 +448,79 @@
 .grid-container {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative; /* Important pour le positionnement absolu des cellules */
     box-sizing: border-box;
 }
 
+/* Conteneur pour le positionnement absolu des cellules */
 .periods-layout {
-    display: flex;
-    gap: clamp(15px, 2vw, 25px);
-    justify-content: center;
-    align-items: center;
+    position: relative; /* Référence pour les positions absolues */
     width: 100%;
     height: 100%;
-    max-width: 90vw;
-    max-height: 80vh;
 }
 
-.period-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    height: 100%;
-    max-width: 30%;
+/* Zones cliquables avec coordonnées exactes en pixels */
+.period-clickzone {
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
 }
 
-.period-title {
-    color: white;
-    font-size: clamp(14px, 2.5vw, 20px);
-    font-weight: bold;
-    margin-bottom: clamp(8px, 1vw, 12px);
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    white-space: nowrap;
+.period-clickzone.paleozoique {
+    left: 130px;   /* Coordonnées exactes */
+    top: 180px;    
+    width: 260px;  
+    height: 360px; 
 }
 
-.period-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 1px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    border-radius: 6px;
-    padding: clamp(4px, 0.8vw, 8px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3/4;
+.period-clickzone.mesozoique {
+    left: 410px;   
+    top: 180px;    
+    width: 260px;
+    height: 360px;
 }
 
+.period-clickzone.cenozoique {
+    left: 690px;   
+    top: 180px;
+    width: 260px;
+    height: 360px;
+}
+
+/* Cellules d'animaux en positionnement absolu */
 .grid-cell {
-    aspect-ratio: 1/1;
-    background: white;
-    border: 1px solid #ddd;
+    position: absolute;
+    background: white; /* Fond blanc restauré */
+    border: 1px solid #ccc; /* Bordure plus fine */
+    border-radius: 2px; /* Coins moins arrondis */
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
     overflow: hidden;
+    z-index: 10; /* Au-dessus des zones cliquables */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Ombre plus discrète */
 }
 
 .grid-cell:hover {
     transform: scale(1.05);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 20;
 }
 
 .grid-cell.discovered {
     background: white;
+    border: 1px solid #ccc;
 }
 
 .grid-cell.locked {
-    background: #f0f0f0;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .grid-cell.empty {
-    background: #e8e8e8;
-    cursor: default;
+    display: none; /* Les cellules vides ne s'affichent pas */
 }
 
 .grid-cell-image {
@@ -539,53 +530,60 @@
     object-position: center;
 }
 
-.locked-silhouette {
-    width: 80%;
-    height: 80%;
-    filter: brightness(0) opacity(0.3);
+
+/* Effet de survol pour les zones cliquables */
+.period-clickzone:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px dashed rgba(255, 255, 255, 0.3);
 }
 
-.lock-overlay {
+/* Titres des périodes (optionnel) */
+.period-title {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: clamp(8px, 1.5vw, 12px);
-    color: #666;
-    pointer-events: none;
+    color: white;
+    font-size: clamp(16px, 2.5vw, 24px);
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    z-index: 5;
+    pointer-events: none; /* N'interfère pas avec les clics */
 }
 
-/* Responsive désactivé - garder uniquement le touch */
-@media (hover: none) and (pointer: coarse) {
-    .grid-cell:hover {
-        transform: none;
-    }
-    
-    .grid-cell:active {
-        transform: scale(0.95);
-    }
-    
-    .period-clickzone:active {
-        background: rgba(255, 255, 255, 0.1);
-    }
+.period-title.paleozoique {
+    left: 200px;
+    bottom: 50px;
 }
 
-/* iPad specific optimizations */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-    .cards-container {
-        flex-direction: column;
-        gap: 2rem;
-    }
+.period-title.mesozoique {
+    left: 620px;
+    bottom: 50px;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    .cards-container {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1.5rem;
+.period-title.cenozoique {
+    left: 1040px;
+    bottom: 50px;
+}
+
+/* Responsive pour plus petits écrans */
+@media (max-width: 1200px) {
+    .period-clickzone.paleozoique {
+        left: calc(120px * 0.8);
+        top: calc(160px * 0.8);
+        width: calc(370px * 0.8);
+        height: calc(490px * 0.8);
     }
     
-    .main-title {
-        margin-bottom: 1.5rem;
+    .period-clickzone.mesozoique {
+        left: calc(540px * 0.8);
+        top: calc(160px * 0.8);
+        width: calc(370px * 0.8);
+        height: calc(490px * 0.8);
+    }
+    
+    .period-clickzone.cenozoique {
+        left: calc(960px * 0.8);
+        top: calc(160px * 0.8);
+        width: calc(370px * 0.8);
+        height: calc(490px * 0.8);
     }
 }

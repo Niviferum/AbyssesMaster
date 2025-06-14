@@ -7,8 +7,11 @@ export declare class GridScreen {
     private eventBinder;
     constructor(appElement: HTMLElement, gameState: GameState, screenManager: ScreenManager);
     private render;
-    private renderPeriodCells;
+    private renderPeriodTitles;
     private renderClickZones;
+    private renderAllDiscoveredAnimals;
+    private renderPeriodAnimals;
+    private renderPeriodAnimalsWithStoredPositions;
     private bindEvents;
     private selectPeriod;
     private selectAnimal;

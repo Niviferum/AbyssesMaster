@@ -1,4 +1,5 @@
 import { Animal } from '../types/interfaces.js';
+import { getGridPosition } from '../screens/IpadGridPositions.js';
 
 export const ANIMALS_DATA: Animal[] = [
     // P1 - Zone littorale
@@ -12,7 +13,7 @@ export const ANIMALS_DATA: Animal[] = [
         fichePath: 'assets/fiches/P1E1M1.png',
         scrollPosition: { x: 200, y: 300 },
         combination: { blue: 1, yellow: 1, red: 1 },
-        gridPosition: { left: 0, top: 184, width: 166, height: 141 } // Cellule 1 Paléozoïque
+        gridPosition: { left: 150, top: 190, width: 105, height: 105 }
     },
     {
         id: 'pleurotomaire_p1e1',
@@ -337,7 +338,7 @@ export const ANIMALS_DATA: Animal[] = [
         name: 'Conodont (Promissum)',
         period: 'E1',
         discovered: false,
-        videoPath: 'assets/videos/P4E1M1-conodont2.mp4',
+        videoPath: 'assets/videos/P4E1M1-conodont.mp4',
         imagePath: 'assets/images/P4E1M1.png',
         fichePath: 'assets/fiches/P4E1M1.png',
         scrollPosition: { x: 200, y: 450 },
