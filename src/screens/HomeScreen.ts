@@ -104,20 +104,25 @@ export class HomeScreen {
     }
 
     private validateCombination(): void {
-        const combination = {
-            blue: this.gameState.selectedCards.blue + 1,
-            yellow: this.gameState.selectedCards.yellow + 1, 
-            red: this.gameState.selectedCards.red + 1
-        };
+    const combination = {
+        blue: this.gameState.selectedCards.blue + 1,
+        yellow: this.gameState.selectedCards.yellow + 1, 
+        red: this.gameState.selectedCards.red + 1
+    };
+    
+    const foundAnimal = findAnimalByCombination(combination);
+    if (foundAnimal) {
+        // Toujours marquer comme découvert et ajouter à la collection
+        foundAnimal.discovered = true;
+        this.gameState.discoveredAnimals.add(foundAnimal.id);
         
-        const foundAnimal = findAnimalByCombination(combination);
-        if (foundAnimal) {
-            foundAnimal.discovered = true;
-            this.gameState.discoveredAnimals.add(foundAnimal.id);
-            this.gameState.currentAnimal = foundAnimal;
-            this.screenManager.navigateToScreen('species');
-        } else {
-            console.log('Aucun animal trouvé pour cette combinaison:', combination);
-        }
+        // Toujours définir comme animal actuel et naviguer
+        this.gameState.currentAnimal = foundAnimal;
+        this.screenManager.navigateToScreen('species');
+    } else {
+        console.log('Aucun animal trouvé pour cette combinaison:', combination);
+        // Optionnel : vous pouvez ajouter un feedback visuel ici
+        // par exemple afficher un message "Combinaison invalide"
     }
+}
 }

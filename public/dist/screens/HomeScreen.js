@@ -93,13 +93,17 @@ export class HomeScreen {
         };
         const foundAnimal = findAnimalByCombination(combination);
         if (foundAnimal) {
+            // Toujours marquer comme découvert et ajouter à la collection
             foundAnimal.discovered = true;
             this.gameState.discoveredAnimals.add(foundAnimal.id);
+            // Toujours définir comme animal actuel et naviguer
             this.gameState.currentAnimal = foundAnimal;
             this.screenManager.navigateToScreen('species');
         }
         else {
             console.log('Aucun animal trouvé pour cette combinaison:', combination);
+            // Optionnel : vous pouvez ajouter un feedback visuel ici
+            // par exemple afficher un message "Combinaison invalide"
         }
     }
 }

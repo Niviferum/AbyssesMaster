@@ -428,7 +428,7 @@ export const ANIMALS_DATA = [
         name: 'Hirondelle',
         period: 'E3',
         discovered: false,
-        videoPath: 'assets/videos/P4E3M3-hirondella.mp4',
+        videoPath: 'assets/videos/P4E3M3-hirondellea.mp4',
         imagePath: 'assets/images/P4E3M3.png',
         lockImagePath: 'assets/images/P4E3M3_lock.png',
         fichePath: 'assets/fiches/P4E3M3.png',
@@ -443,8 +443,7 @@ export function getAnimalById(id) {
     return ANIMALS_DATA.find(animal => animal.id === id);
 }
 export function findAnimalByCombination(combination) {
-    return ANIMALS_DATA.find(animal => !animal.discovered &&
-        animal.combination.blue === combination.blue &&
+    return ANIMALS_DATA.find(animal => animal.combination.blue === combination.blue &&
         animal.combination.yellow === combination.yellow &&
         animal.combination.red === combination.red);
 }
