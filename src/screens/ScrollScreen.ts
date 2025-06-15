@@ -260,6 +260,11 @@ export class ScrollScreen {
     private getIOSVideoCSS(): string {
         return `
         /* iOS Video Fixes */
+        .videoAnim {
+            background: transparent !important;
+            overflow: hidden !important;
+        }
+
         .videoAnim video {
             -webkit-playsinline: true !important;
             playsinline: true !important;
@@ -281,64 +286,16 @@ export class ScrollScreen {
             transform: translate3d(0,0,0) !important;
             -webkit-backface-visibility: hidden !important;
             backface-visibility: hidden !important;
-        }
-
-        /* === SUPPRESSION FOND NOIR VIDÉOS === */
-        .videoAnim {
-            /* Conteneur sans fond */
-            background: transparent !important;
-            overflow: hidden !important;
-        }
-
-        .videoAnim video {
-            /* Suppression fond noir */
-            background: transparent !important;
             
-            /* Mode de fusion pour supprimer le noir */
-            mix-blend-mode: screen !important;
-            
-            /* Alternative : utiliser un filtre pour augmenter la luminosité des zones sombres */
-            filter: contrast(1.2) brightness(1.1) !important;
-            
-            /* Masquer les pixels noirs/très sombres */
-            -webkit-mask: 
-                linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%),
-                radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%) !important;
-            mask: 
-                linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%),
-                radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%) !important;
-            
-            /* Composition du masque */
-            -webkit-mask-composite: intersect !important;
-            mask-composite: intersect !important;
-        }
-
-        /* Méthode alternative : CSS Filter pour chroma key */
-        .videoAnim.chroma-key video {
-            /* Supprimer le noir via filtres CSS */
+            /* === TRANSPARENCE SIMPLE === */
+            /* Supprimer le noir, garder le reste transparent */
             filter: 
-                contrast(1.3) 
-                brightness(1.2) 
-                saturate(1.1) 
-                hue-rotate(0deg) !important;
+                contrast(1.1)
+                brightness(1.05)
+                drop-shadow(0 0 0 transparent) !important;
             
-            /* Mix blend mode pour fusionner avec l'arrière-plan */
-            mix-blend-mode: multiply !important;
-            
-            /* Isolation du conteneur */
-            isolation: isolate !important;
-        }
-
-        /* Méthode 3 : Clip-path dynamique */
-        .videoAnim.auto-crop video {
-            /* Rogner automatiquement les bords noirs */
-            clip-path: inset(5% 5% 5% 5%) !important;
-            
-            /* Agrandir légèrement pour compenser */
-            transform: scale(1.1) !important;
-            
-            /* Centrer */
-            object-position: center center !important;
+            /* Mode de fusion pour rendre le noir transparent */
+            mix-blend-mode: screen !important;
         }
 
         .videoAnim video::-webkit-media-controls,
@@ -367,10 +324,9 @@ export class ScrollScreen {
             .videoAnim {
                 pointer-events: auto !important;
                 overflow: hidden !important;
-                -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
+                background: transparent !important;
                 -webkit-transform: translateZ(0) !important;
                 transform: translateZ(0) !important;
-                background: transparent !important;
             }
         }
         `;
