@@ -21,7 +21,9 @@ export declare class ScrollScreen {
     private exposeNavigationFunctions;
     private fixAssetPaths;
     private loadParallaxStyles;
+    private getIOSVideoCSS;
     private executeParallaxScripts;
+    private fixiOSVideos;
     private renderFallback;
     private bindEvents;
     private bindParallaxEvents;
