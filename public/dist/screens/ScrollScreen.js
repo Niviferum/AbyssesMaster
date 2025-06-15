@@ -242,6 +242,64 @@ export class ScrollScreen {
             backface-visibility: hidden !important;
         }
 
+        /* === SUPPRESSION FOND NOIR VIDÉOS === */
+        .videoAnim {
+            /* Conteneur sans fond */
+            background: transparent !important;
+            overflow: hidden !important;
+        }
+
+        .videoAnim video {
+            /* Suppression fond noir */
+            background: transparent !important;
+            
+            /* Mode de fusion pour supprimer le noir */
+            mix-blend-mode: screen !important;
+            
+            /* Alternative : utiliser un filtre pour augmenter la luminosité des zones sombres */
+            filter: contrast(1.2) brightness(1.1) !important;
+            
+            /* Masquer les pixels noirs/très sombres */
+            -webkit-mask: 
+                linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%),
+                radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%) !important;
+            mask: 
+                linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%),
+                radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%) !important;
+            
+            /* Composition du masque */
+            -webkit-mask-composite: intersect !important;
+            mask-composite: intersect !important;
+        }
+
+        /* Méthode alternative : CSS Filter pour chroma key */
+        .videoAnim.chroma-key video {
+            /* Supprimer le noir via filtres CSS */
+            filter: 
+                contrast(1.3) 
+                brightness(1.2) 
+                saturate(1.1) 
+                hue-rotate(0deg) !important;
+            
+            /* Mix blend mode pour fusionner avec l'arrière-plan */
+            mix-blend-mode: multiply !important;
+            
+            /* Isolation du conteneur */
+            isolation: isolate !important;
+        }
+
+        /* Méthode 3 : Clip-path dynamique */
+        .videoAnim.auto-crop video {
+            /* Rogner automatiquement les bords noirs */
+            clip-path: inset(5% 5% 5% 5%) !important;
+            
+            /* Agrandir légèrement pour compenser */
+            transform: scale(1.1) !important;
+            
+            /* Centrer */
+            object-position: center center !important;
+        }
+
         .videoAnim video::-webkit-media-controls,
         .videoAnim video::-webkit-media-controls-panel,
         .videoAnim video::-webkit-media-controls-play-button,
@@ -271,6 +329,7 @@ export class ScrollScreen {
                 -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
                 -webkit-transform: translateZ(0) !important;
                 transform: translateZ(0) !important;
+                background: transparent !important;
             }
         }
         `;
