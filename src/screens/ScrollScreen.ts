@@ -579,7 +579,7 @@ export class ScrollScreen {
             'plesiosaure': 'plesiosaure',
             'requin': 'requin_lutin',
             'liparid1': 'liparid',
-            'strigosa': 'galathea_strigosa',
+            'neoglyphea': 'neoglyphea',
             'nautile': 'nautile_pleurotomaire',
             'vampire': 'vampire_des_abysses',
             'coleia': 'coleia_p4e2m3',
@@ -599,7 +599,7 @@ export class ScrollScreen {
             'bathynome': 'bathynome_geant',
             'pieuvre': 'pieuvre_anneaux_bleus',
             'moule': 'bathymodiolinae_p4e3m2',
-            'neoglyphea': 'neoglyphea',
+            'galathea': 'galathea',
             'scalyfoot': 'scalyfoot_pleurotomaire',
             'hirondellea': 'hirondelle_p4e3m3'
         };

@@ -209,7 +209,7 @@ export const ANIMALS_DATA: Animal[] = [
         combination: { blue: 2, yellow: 3, red: 2 }
     },
     {
-        id: 'galathea_strigosa',
+        id: 'galathea',
         name: 'Galathea Strigosa (Galathea)',
         period: 'E3',
         discovered: false,
