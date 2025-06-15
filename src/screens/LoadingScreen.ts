@@ -22,15 +22,96 @@ export class LoadingScreen {
                 <video autoplay muted class="loading-video" id="loading-video">
                     <source src="videos/ecran_attente.mp4" type="video/mp4">
                 </video>
+                
+                <!-- Bouton skip discret -->
+                <div class="skip-button" id="skip-btn" title="Passer l'animation (Ctrl+A)">
+                    <span class="skip-icon">⏭</span>
+                </div>
             </div>
+            
+            <style>
+                .loading-screen {
+                    position: relative;
+                    width: 100%;
+                    height: 100vh;
+                    overflow: hidden;
+                }
+                
+                .loading-video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                
+                .skip-button {
+                    position: absolute;
+                    bottom: 30px;
+                    right: 30px;
+                    width: 50px;
+                    height: 50px;
+                    background: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    opacity: 0.7;
+                    transition: all 0.3s ease;
+                    z-index: 1000;
+                    backdrop-filter: blur(5px);
+                    border: 2px solid rgba(255, 255, 255, 0.2);
+                }
+                
+                .skip-button:hover {
+                    opacity: 1;
+                    transform: scale(1.1);
+                    background: rgba(0, 0, 0, 0.7);
+                    border-color: rgba(255, 255, 255, 0.4);
+                }
+                
+                .skip-icon {
+                    color: white;
+                    font-size: 20px;
+                    line-height: 1;
+                    user-select: none;
+                }
+                
+                /* Animation d'apparition discrète */
+                .skip-button {
+                    animation: fadeInDiscrete 2s ease-in-out;
+                }
+                
+                @keyframes fadeInDiscrete {
+                    0% { 
+                        opacity: 0; 
+                        transform: translateY(20px) scale(0.8); 
+                    }
+                    70% { 
+                        opacity: 0; 
+                    }
+                    100% { 
+                        opacity: 0.7; 
+                        transform: translateY(0) scale(1); 
+                    }
+                }
+            </style>
         `;
     }
 
     private bindEvents(): void {
         const video = document.getElementById('loading-video') as HTMLVideoElement;
+        const skipBtn = document.getElementById('skip-btn') as HTMLElement;
         
         // Ajouter l'écouteur de clavier pour skip
         document.addEventListener('keydown', this.keyboardListener);
+        
+        // Ajouter l'écouteur de clic sur le bouton skip
+        if (skipBtn) {
+            skipBtn.addEventListener('click', () => {
+                console.log('Skip vidéo avec bouton');
+                this.skipVideo();
+            });
+        }
         
         if (video) {
             // Attendre que la vidéo se termine avant de passer à l'écran suivant
