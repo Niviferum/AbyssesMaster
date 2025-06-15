@@ -127,12 +127,12 @@ button {
 
 #coelacanthe1 {
     width: min(200px, 10vw);
-    top: 12%;
+    top: 20%;
     left: 30vw;
     animation-name: coelacanthe1;
     animation-duration: 50s;
     animation-delay: 0s;
-    transform: scale(clamp(0.7, 1, 1.5));
+    transform: scale(clamp(3, 4, 1.5));
 }
 @keyframes coelacanthe1 {
     0%   { left: 30vw; }
@@ -146,7 +146,7 @@ button {
     animation-name: conodont1;
     animation-duration: 30s;
     animation-delay: 0s;
-    transform: scale(clamp(0.7, 1, 1.3));
+    transform: scale(clamp(2.5, 1, 1.3));
 }
 @keyframes conodont1 {
     0%   { left: 100vw; }
@@ -155,12 +155,12 @@ button {
 
 #conodont2 {
     width: min(200px, 10vw);
-    top: 72%;
+    top: 75%;
     left: 100vw;
     animation-name: conodont2;
     animation-duration: 20s;
     animation-delay: 5s;
-    transform: scale(clamp(1.2, 2, 3));
+    transform: scale(clamp(2.5, 2, 3));
 }
 @keyframes conodont2 {
     0%   { left: 100vw; }
@@ -170,29 +170,29 @@ button {
 /* PLAN 3 - Jaune (data-depth="0.7") */
 #orthocone {
     width: min(180px, 9vw);
-    top: 13.2%;
-    left: 27.2%;
-    transform: scale(clamp(0.7, 1, 1.3));
+    top: 30.2%;
+    left: 45.2%;
+    transform: scale(clamp(4, 4, 1.3));
 }
 
 #nipponite {
     width: min(250px, 12vw);
     top: 61.2%;
-    left: 62.8%;
+    left: 42.8%;
     transform: scale(clamp(1.5, 2.5, 4));
 }
 
 #pycnogonide1 {
     width: min(120px, 6vw);
-    top: 78%;
-    left: 58.6%;
-    transform: scale(clamp(0.7, 1, 1.3));
+    top: 88%;
+    left: 70.6%;
+    transform: scale(clamp(2.2, 1, 1.3));
 }
 
 /* PLAN 2 - Vert (data-depth="0.4") */
 #anomalocaris {
     width: min(300px, 15vw);
-    top: 16.8%;
+    top: 35.8%;
     left: 30vw;
     animation-name: anomalocaris;
     animation-duration: 40s;
@@ -206,16 +206,16 @@ button {
 
 #limule {
     width: min(200px, 10vw);
-    top: 6.6%;
-    left: 20.9%;
+    top: 9.6%;
+    left: 34.9%;
     transform: scale(clamp(1, 1.5, 2.2));
 }
 
 #chiton1 {
     width: min(180px, 9vw);
-    top: 84%;
+    top: 94%;
     left: 62.8%;
-    transform: scale(clamp(1, 1.5, 2.2));
+    transform: scale(clamp(1.7, 1.5, 2.2));
 }
 
 /* PLAN 1 - Premier plan (data-depth="0.1") */
@@ -383,7 +383,7 @@ button {
 /* Desktop */
 @media (min-width: 1025px) and (max-width: 1919px) {
     .videoAnim {
-        max-width: 18vw;
+        max-width: 50vw;
         min-width: 120px;
     }
 }
