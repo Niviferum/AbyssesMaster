@@ -386,7 +386,7 @@ button {
 
 #noto {
     width: min(250px, 12vw);
-    top: 15%;
+    top: 25%;
     left: 30vw;
     animation-name: noto;
     animation-duration: 10s;
@@ -398,10 +398,54 @@ button {
     100% { left: 110vw; }
 }
 
+#pieuvre {
+	width: min(200px, 10vw);
+	top: 25%;
+	left: 35%;
+	animation-name: pieuvre;
+	animation-duration: 20s;
+	animation-delay: 0s;
+	transform: scale(clamp(1.5, 2, 3));
+}
+
+#triops {
+	width: min(150px, 8vw);
+	top: 30%;
+	left: 80%;
+	animation-name: triops;
+	animation-duration: 30s;
+	animation-delay: 0s;
+	transform: scale(clamp(1.2, 2, 3));
+}
+
+#coelacanthe3 {
+	width: min(200px, 10vw);
+	top: 40%;
+	left: 40vw;
+	animation-name: coelacanthe3;
+	animation-duration: 30s;
+	animation-delay: 0s;
+	transform: scale(clamp(2.5, 2, 3));
+}
+@keyframes coelacanthe3 {
+	0%   { left: 40vw; }
+	100% { left: 120vw; }
+}
+
+#galathea {
+	width: min(200px, 10vw);
+	top: 42%;
+	left: 15%;
+	animation-name: galathea;
+	animation-duration: 20s;
+	animation-delay: 5s;
+	transform: scale(clamp(1.2, 2, 3));
+}
+
 #calmar {
     width: min(250px, 12vw);
-    top: 27.6%;
-    left: 110vw;
+    top: 45.6%;
+    left: 70%;
     animation-name: calmar;
     animation-duration: 30s;
     animation-delay: 0s;
@@ -410,6 +454,79 @@ button {
 @keyframes calmar {
     0%   { left: 110vw; }
     100% { left: 30vw; }
+}
+
+#whalefish {
+	width: min(250px, 12vw);
+    top: 57.6%;
+    left: 70%;
+    animation-name: whalefish;
+    animation-duration: 30s;
+    animation-delay: 0s;
+    transform: scale(clamp(1.2, 2, 3));
+
+}
+@keyframes whalefish {
+    0%   { left: 110vw; }
+    100% { left: 30vw; }
+}
+
+#scalyfoot {
+	width: min(200px, 10vw);
+	top: 75%;
+	left: 15%;
+	animation-name: scalyfoot;
+	animation-duration: 20s;
+	animation-delay: 5s;
+	transform: scale(clamp(1.2, 2, 3));
+}
+
+#bathynome {
+	width: min(200px, 10vw);
+	top: 85%;
+	left: 60%;
+	animation-name: bathynome;
+	animation-duration: 30s;
+	animation-delay: 0s;
+	transform: scale(clamp(1.2, 2, 3));
+}
+@keyframes bathynome {
+	0%   { left: 80vw; }
+	100% { left: 110vw; }
+}
+
+#liparid2 {
+	width: min(200px, 10vw);
+	top: 90%;
+	left: 50%;
+	animation-name: liparid2;
+	animation-duration: 30s;
+	animation-delay: 0s;
+	transform: scale(clamp(1.2, 2, 3));
+}
+@keyframes liparid2 {
+	0%   { left: 50vw; }
+	100% { left: 30vw; }
+}
+
+#moule {
+	width: min(150px, 8vw);
+	top: 95%;
+	left: 70%;
+	animation-name: moule;
+	animation-duration: 20s;
+	animation-delay: 5s;
+	transform: scale(clamp(1.2, 2, 3));
+}
+
+#hirondellea {
+	width: min(200px, 10vw);
+	top: 95%;
+	left: 20%;
+	animation-name: hirondellea;
+	animation-duration: 30s;
+	animation-delay: 0s;
+	transform: scale(clamp(1.2, 2, 3));
 }
 
 /*---------------------------------------------------*/
