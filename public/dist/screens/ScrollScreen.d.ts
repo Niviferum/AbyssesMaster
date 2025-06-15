@@ -27,7 +27,11 @@ export declare class ScrollScreen {
     private renderFallback;
     private bindEvents;
     private bindParallaxEvents;
-    private selectAnimalFromParallax;
     private goBack;
-    cleanup(): void;
+    private updateAnimalVisibility;
+    private isAnimalDiscovered;
+    private getAnimalMapping;
+    refreshAnimalVisibility(): void;
+    showAllAnimals(): void;
+    hideAllAnimals(): void;
 }

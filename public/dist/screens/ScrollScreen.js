@@ -147,14 +147,29 @@ export class ScrollScreen {
                     height: 100% !important;
                     overflow: auto !important;
                 }
+
+                /* === ANIMAUX NON DÉCOUVERTS === */
+                .videoAnim.undiscovered {
+                    display: none !important;
+                    visibility: hidden !important;
+                    opacity: 0 !important;
+                }
+
+                /* === ANIMAUX DÉCOUVERTS === */
+                .videoAnim.discovered {
+                    display: block !important;
+                    visibility: visible !important;
+                    opacity: 1 !important;
+                }
             </style>
         `;
         this.exposeNavigationFunctions();
         await this.loadParallaxStyles(doc);
-        // IMPORTANT : Appliquer les fixes iOS après le chargement du contenu
+        // IMPORTANT : Appliquer les fixes iOS et la logique de découverte après le chargement du contenu
         setTimeout(() => {
             this.executeParallaxScripts(doc);
-            this.fixiOSVideos(); // ← FIX AJOUTÉ ICI
+            this.fixiOSVideos();
+            this.updateAnimalVisibility(); // ← Contrôler l'affichage des animaux
         }, 100);
     }
     exposeNavigationFunctions() {
@@ -219,6 +234,11 @@ export class ScrollScreen {
     getIOSVideoCSS() {
         return `
         /* iOS Video Fixes */
+        .videoAnim {
+            background: transparent !important;
+            overflow: hidden !important;
+        }
+
         .videoAnim video {
             -webkit-playsinline: true !important;
             playsinline: true !important;
@@ -240,64 +260,16 @@ export class ScrollScreen {
             transform: translate3d(0,0,0) !important;
             -webkit-backface-visibility: hidden !important;
             backface-visibility: hidden !important;
-        }
-
-        /* === SUPPRESSION FOND NOIR VIDÉOS === */
-        .videoAnim {
-            /* Conteneur sans fond */
-            background: transparent !important;
-            overflow: hidden !important;
-        }
-
-        .videoAnim video {
-            /* Suppression fond noir */
-            background: transparent !important;
             
-            /* Mode de fusion pour supprimer le noir */
-            mix-blend-mode: screen !important;
-            
-            /* Alternative : utiliser un filtre pour augmenter la luminosité des zones sombres */
-            filter: contrast(1.2) brightness(1.1) !important;
-            
-            /* Masquer les pixels noirs/très sombres */
-            -webkit-mask: 
-                linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%),
-                radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%) !important;
-            mask: 
-                linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%),
-                radial-gradient(ellipse at center, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%) !important;
-            
-            /* Composition du masque */
-            -webkit-mask-composite: intersect !important;
-            mask-composite: intersect !important;
-        }
-
-        /* Méthode alternative : CSS Filter pour chroma key */
-        .videoAnim.chroma-key video {
-            /* Supprimer le noir via filtres CSS */
+            /* === TRANSPARENCE SIMPLE === */
+            /* Supprimer le noir, garder le reste transparent */
             filter: 
-                contrast(1.3) 
-                brightness(1.2) 
-                saturate(1.1) 
-                hue-rotate(0deg) !important;
+                contrast(1.1)
+                brightness(1.05)
+                drop-shadow(0 0 0 transparent) !important;
             
-            /* Mix blend mode pour fusionner avec l'arrière-plan */
-            mix-blend-mode: multiply !important;
-            
-            /* Isolation du conteneur */
-            isolation: isolate !important;
-        }
-
-        /* Méthode 3 : Clip-path dynamique */
-        .videoAnim.auto-crop video {
-            /* Rogner automatiquement les bords noirs */
-            clip-path: inset(5% 5% 5% 5%) !important;
-            
-            /* Agrandir légèrement pour compenser */
-            transform: scale(1.1) !important;
-            
-            /* Centrer */
-            object-position: center center !important;
+            /* Mode de fusion pour rendre le noir transparent */
+            mix-blend-mode: screen !important;
         }
 
         .videoAnim video::-webkit-media-controls,
@@ -326,10 +298,9 @@ export class ScrollScreen {
             .videoAnim {
                 pointer-events: auto !important;
                 overflow: hidden !important;
-                -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
+                background: transparent !important;
                 -webkit-transform: translateZ(0) !important;
                 transform: translateZ(0) !important;
-                background: transparent !important;
             }
         }
         `;
@@ -470,23 +441,15 @@ export class ScrollScreen {
                 handler: () => this.screenManager.navigateToScreen('grid')
             }
         ]);
+        // Pas de binding sur les animaux - ils ne sont pas cliquables
         setTimeout(() => {
             this.bindParallaxEvents();
         }, 500);
     }
     bindParallaxEvents() {
-        const animalElements = this.appElement.querySelectorAll('[data-animal-id], .clickable-animal, .animal-zone, .videoAnim');
-        animalElements.forEach(element => {
-            element.addEventListener('click', (e) => this.selectAnimalFromParallax(e));
-        });
-    }
-    selectAnimalFromParallax(e) {
-        const target = e.currentTarget;
-        const animalId = target.dataset.animalId || target.getAttribute('data-animal') || target.id;
-        if (animalId) {
-            console.log('Animal sélectionné dans le parallaxe:', animalId);
-            // Ici mapper vers vos données d'animaux
-        }
+        // Les animaux ne sont plus cliquables, cette méthode peut rester vide 
+        // ou être utilisée pour d'autres éléments interactifs du parallaxe
+        console.log('Parallax events: animaux non-cliquables, pas de binding nécessaire');
     }
     goBack() {
         if (this.gameState.currentAnimal) {
@@ -496,15 +459,105 @@ export class ScrollScreen {
             this.screenManager.navigateToScreen('home');
         }
     }
-    cleanup() {
-        const parallaxStyles = document.querySelectorAll('[data-parallax-style]');
-        const parallaxScripts = document.querySelectorAll('[data-parallax-script]');
-        parallaxStyles.forEach(style => style.remove());
-        parallaxScripts.forEach(script => script.remove());
-        delete window.navigateToSpecies;
-        delete window.navigateToGrid;
-        delete window.navigateToHome;
-        delete window.setCurrentAnimal;
+    updateAnimalVisibility() {
+        console.log('Mise à jour de la visibilité des animaux...');
+        // Récupérer tous les animaux dans le parallaxe
+        const animalElements = document.querySelectorAll('.videoAnim');
+        animalElements.forEach(element => {
+            const animalId = element.id;
+            if (animalId) {
+                // Vérifier si l'animal a été découvert en utilisant votre logique existante
+                const isDiscovered = this.isAnimalDiscovered(animalId);
+                if (isDiscovered) {
+                    element.classList.add('discovered');
+                    element.classList.remove('undiscovered');
+                    console.log(`Animal ${animalId} : AFFICHÉ (découvert)`);
+                }
+                else {
+                    element.classList.add('undiscovered');
+                    element.classList.remove('discovered');
+                    console.log(`Animal ${animalId} : MASQUÉ (non découvert)`);
+                }
+            }
+        });
+    }
+    isAnimalDiscovered(animalId) {
+        // Mapping des IDs du parallaxe vers les IDs de votre système d'animaux
+        const animalMapping = this.getAnimalMapping();
+        const gameAnimalId = animalMapping[animalId];
+        if (!gameAnimalId) {
+            console.warn(`Animal ID ${animalId} non trouvé dans le mapping`);
+            return false; // Par défaut, ne pas afficher si pas mappé
+        }
+        // Utiliser votre logique existante : vérifier dans discoveredAnimals Set
+        return this.gameState.discoveredAnimals.has(gameAnimalId);
+    }
+    getAnimalMapping() {
+        // Mapping entre les IDs du parallaxe et les IDs de votre système ANIMALS_DATA
+        // Basé sur vos vraies données d'animaux
+        return {
+            // PALÉOZOÏQUE (E1)
+            'placo': 'placoderme',
+            'coelacanthe1': 'coelacanthe_p2e1',
+            'conodont1': 'conodont_p3e1',
+            'conodont2': 'conodont_p4e1',
+            'orthocone': 'orthocone',
+            'nipponite': 'nipponites',
+            'pycnogonide1': 'pycnogonide_cambropycnogon',
+            'anomalocaris': 'anomalocaris',
+            'limule': 'limule',
+            'chiton1': 'chitons',
+            'pleuro': 'pleurotomaire_p1e1',
+            'eryma': 'glypheoidea',
+            // MÉSOZOÏQUE (E2)
+            'plesiosaure': 'plesiosaure',
+            'requin': 'requin_lutin',
+            'liparid1': 'liparid',
+            'strigosa': 'galathea_strigosa',
+            'nautile': 'nautile_pleurotomaire',
+            'vampire': 'vampire_des_abysses',
+            'coleia': 'coleia_p4e2m3',
+            'coelacanthe2': 'coelacanthe_foreyia',
+            'pycnogonide2': 'pycnogonide_p3e2',
+            'chiton2': 'chiton_p4e2m2',
+            'argo': 'argonaute',
+            'eury': 'eurypteride',
+            // CÉNOZOÏQUE (E3)
+            'noto': 'nothotenia',
+            'coelacanthe3': 'coelacanthe_p2e3',
+            'whalefish': 'whalefish',
+            'liparid2': 'liparid_p4e3m1',
+            'triops': 'triops',
+            'calmar': 'calmar_commun',
+            'bathynome': 'bathynome_geant',
+            'pieuvre': 'pieuvre_anneaux_bleus',
+            'moule': 'bathymodiolinae_p4e3m2',
+            'neoglyphea': 'neoglyphea',
+            'scalyfoot': 'scalyfoot_pleurotomaire',
+            'hirondellea': 'hirondelle_p4e3m3'
+        };
+    }
+    // Méthode publique pour rafraîchir l'affichage (à appeler quand un animal est découvert)
+    refreshAnimalVisibility() {
+        this.updateAnimalVisibility();
+    }
+    // Méthode pour débugger - afficher tous les animaux (mode dev)
+    showAllAnimals() {
+        console.log('Mode debug : affichage de tous les animaux');
+        const animalElements = document.querySelectorAll('.videoAnim');
+        animalElements.forEach(element => {
+            element.classList.add('discovered');
+            element.classList.remove('undiscovered');
+        });
+    }
+    // Méthode pour masquer tous les animaux
+    hideAllAnimals() {
+        console.log('Masquage de tous les animaux');
+        const animalElements = document.querySelectorAll('.videoAnim');
+        animalElements.forEach(element => {
+            element.classList.add('undiscovered');
+            element.classList.remove('discovered');
+        });
     }
 }
 //# sourceMappingURL=ScrollScreen.js.map
