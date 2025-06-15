@@ -247,7 +247,7 @@ export const ANIMALS_DATA = [
         name: 'Glypheoidea (Eryma)',
         period: 'E1',
         discovered: false,
-        videoPath: 'assets/videos/P3E1M3-glypheoidea.mp4',
+        videoPath: 'assets/videos/P3E1M3-eryma.mp4',
         imagePath: 'assets/images/P3E1M3.png',
         lockImagePath: 'assets/images/P3E1M3_lock.png',
         fichePath: 'assets/fiches/P3E1M3.png',
