@@ -390,6 +390,8 @@ export class ScrollScreen {
                     video.setAttribute('disablePictureInPicture', 'true');
                     video.setAttribute('x-webkit-airplay', 'deny');
                     video.setAttribute('controlslist', 'nodownload nofullscreen noremoteplayback');
+                    video.style.background = 'transparent';
+                    video.style.mixBlendMode = 'screen'; // Le noir devient transparent
                     video.controls = false;
                     
                     // Empêcher tous les événements tactiles iOS

@@ -337,7 +337,7 @@ export const ANIMALS_DATA: Animal[] = [
         name: 'Conodont (Promissum)',
         period: 'E1',
         discovered: false,
-        videoPath: 'assets/videos/P4E1M1-conodont2.mp4',
+        videoPath: 'assets/videos/P4E1M1-condont2.mp4',
         imagePath: 'assets/images/P4E1M1.png',
         lockImagePath: 'assets/images/P4E1M1_lock.png',
         fichePath: 'assets/fiches/P4E1M1.png',
